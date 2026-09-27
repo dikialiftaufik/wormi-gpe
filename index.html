@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WORMI — Komposter Dapur Mini Berkarakter Cacing</title>
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <meta name="description"
+        content="WORMI adalah komposter dapur mini berkarakter cacing untuk mengolah sisa sayur & buah jadi kompos. Cocok untuk kos, apartemen, dan rumah minimalis.">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Nunito:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        terracotta: '#D98B6B',
+                        'terracotta-light': '#E8A584',
+                        'green-dark': '#2F4A3D',
+                        'green-darker': '#243B30',
+                        'green-light': '#E8F3EF',
+                        cream: '#FDFBF7',
+                        'cream-dark': '#EDE5D4',
+                        'brown-dark': '#4A3728',
+                        'brown-medium': '#6B5344',
+                        'peach-light': '#FFF5F2',
+                    },
+                    fontFamily: {
+                        heading: ['Quicksand', 'sans-serif'],
+                        body: ['Nunito', 'sans-serif'],
+                    },
+                    borderRadius: {
+                        '2xl': '1rem',
+                        '3xl': '1.5rem',
+                        '4xl': '2rem',
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px rgba(0, 0, 0, 0.05)',
+                        'hover': '0 10px 30px rgba(0, 0, 0, 0.08)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background-color: #FDFBF7;
+            color: #4A3728;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Quicksand', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Navbar */
+        .navbar-scrolled {
+            box-shadow: 0 2px 20px rgba(74, 55, 40, 0.05);
+            background: rgba(253, 251, 247, 0.95);
+            backdrop-filter: blur(10px);
+        }
+
+        /* Hover lift card effect */
+        .hover-lift {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .hover-lift:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 30px rgba(74, 55, 40, 0.08);
+        }
+
+        /* Scrollbar hide */
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* Hero mask gradient */
+        .hero-mask {
+            mask-image: linear-gradient(to right, transparent, black 40%);
+            -webkit-mask-image: linear-gradient(to right, transparent, black 40%);
+        }
+
+        /* ---- Keyframe Animations ---- */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(24px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes floatY {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        @keyframes pulseSoft {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.06); }
+        }
+
+        .animate-fade-in-up {
+            animation: fadeInUp 0.7s ease-out both;
+        }
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
+
+        .animate-float {
+            animation: floatY 3s ease-in-out infinite;
+        }
+
+        /* Scroll-reveal: hidden by default, revealed by JS */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+        .reveal.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Step number badge */
+        .step-badge {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 2rem;
+            height: 2rem;
+            border-radius: 9999px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.875rem;
+            border: 2.5px solid #FDFBF7;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+            z-index: 10;
+            transition: transform 0.3s ease;
+        }
+        .group:hover .step-badge {
+            transform: translate(-50%, -50%) scale(1.15);
+        }
+
+        /* Footer social icon hover lift */
+        .social-icon {
+            transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+        }
+        .social-icon:hover {
+            transform: translateY(-3px);
+        }
+    </style>
+</head>
+
+<body class="antialiased overflow-x-hidden">
+
+    <!-- ===================== NAVIGATION ===================== -->
+    <nav id="navbar"
+        class="fixed w-full z-50 transition-all duration-300 bg-cream/90 backdrop-blur-md border-b border-black/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <a href="index.html" class="flex-shrink-0 flex items-center">
+                    <img src="assets/logo.png" alt="WORMI Logo" class="h-10 w-auto">
+                </a>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html"
+                        class="font-heading font-bold text-brown-dark border-b-2 border-terracotta pb-1">Beranda</a>
+                    <a href="produk.html"
+                        class="font-heading font-semibold text-brown-medium hover:text-brown-dark transition-colors">Produk</a>
+                    <a href="cara-pakai.html"
+                        class="font-heading font-semibold text-brown-medium hover:text-brown-dark transition-colors">Cara
+                        Pakai</a>
+                    <a href="blog.html"
+                        class="font-heading font-semibold text-brown-medium hover:text-brown-dark transition-colors">Blog</a>
+                    <a href="testimoni.html"
+                        class="font-heading font-semibold text-brown-medium hover:text-brown-dark transition-colors">Testimoni</a>
+                    <a href="eco-events.html"
+                        class="font-heading font-semibold text-brown-medium hover:text-brown-dark transition-colors">Eco
+                        Events</a>
+                    <a href="faq.html"
+                        class="font-heading font-semibold text-brown-medium hover:text-brown-dark transition-colors">FAQ</a>
+                </div>
+
+                <!-- Right Actions -->
+                <div class="hidden md:flex items-center gap-6">
+                    <!-- Cart -->
+                    <a href="keranjang.html" class="relative group">
+                        <svg class="w-6 h-6 text-brown-dark group-hover:text-terracotta transition-colors" fill="none"
+                            stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z">
+                            </path>
+                        </svg>
+                        <span id="cart-badge-desktop"
+                            class="absolute -top-2 -right-2 bg-terracotta text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">0</span>
+                    </a>
+
+                    <!-- CTA Button -->
+                    <a href="produk.html"
+                        class="bg-green-dark text-white px-6 py-2.5 rounded-full font-heading font-bold text-sm hover:bg-green-darker hover:-translate-y-0.5 transition-all duration-300 flex items-center gap-2 shadow-sm hover:shadow-md">
+                        Pesan Sekarang <span class="text-lg leading-none">&rarr;</span>
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center gap-4">
+                    <a href="keranjang.html" class="relative">
+                        <svg class="w-6 h-6 text-brown-dark" fill="none" stroke="currentColor" stroke-width="2"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z">
+                            </path>
+                        </svg>
+                        <span id="cart-badge-mobile"
+                            class="absolute -top-2 -right-2 bg-terracotta text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">0</span>
+                    </a>
+                    <button id="mobile-menu-btn" class="text-brown-dark hover:text-terracotta transition-colors">
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Panel -->
+        <div id="mobile-menu"
+            class="fixed inset-0 bg-cream z-50 transform translate-x-full transition-transform duration-300 md:hidden">
+            <div class="flex justify-between items-center p-4 border-b border-black/5">
+                <img src="assets/logo.png" alt="WORMI" class="h-8 w-auto">
+                <button id="close-menu-btn" class="text-brown-dark">
+                    <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+            <div class="flex flex-col p-6 space-y-6">
+                <a href="index.html" class="font-heading font-bold text-xl text-brown-dark">Beranda</a>
+                <a href="produk.html" class="font-heading font-bold text-xl text-brown-medium">Produk</a>
+                <a href="cara-pakai.html" class="font-heading font-bold text-xl text-brown-medium">Cara Pakai</a>
+                <a href="blog.html" class="font-heading font-bold text-xl text-brown-medium">Blog</a>
+                <a href="testimoni.html" class="font-heading font-bold text-xl text-brown-medium">Testimoni</a>
+                <a href="eco-events.html" class="font-heading font-bold text-xl text-brown-medium">Eco Events</a>
+                <a href="faq.html" class="font-heading font-bold text-xl text-brown-medium">FAQ</a>
+                <hr class="border-black/5">
+                <a href="produk.html"
+                    class="bg-green-dark text-white px-6 py-3 rounded-full font-heading font-bold text-center">Pesan
+                    Sekarang</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ===================== HERO SECTION ===================== -->
+    <section class="relative pt-32 pb-20 md:pt-40 md:pb-24 overflow-hidden">
+        <!-- Hero Background Image -->
+        <div class="absolute inset-0 z-0">
+            <img src="assets/hero-banner.png" alt="WORMI Komposter di Dapur"
+                class="w-full h-full object-cover object-center">
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex flex-col md:flex-row items-center">
+            <!-- Left Content -->
+            <div class="w-full md:w-[60%] lg:w-[50%] pr-0 md:pr-8 py-10 lg:py-20">
+                <!-- Badge -->
+                <div
+                    class="animate-fade-in-up inline-flex items-center gap-2 bg-green-light rounded-full px-4 py-1.5 mb-6 border border-green-dark/10 shadow-sm">
+                    <svg class="w-4 h-4 text-green-dark" fill="currentColor" viewBox="0 0 24 24">
+                        <path
+                            d="M17 8C17 5.24 14.76 3 12 3C9.24 3 7 5.24 7 8C7 10.76 9.24 13 12 13C14.76 13 17 10.76 17 8ZM12 11C10.34 11 9 9.66 9 8C9 6.34 10.34 5 12 5C13.66 5 15 6.34 15 8C15 9.66 13.66 11 12 11ZM21 16.5C21 15.12 19.88 14 18.5 14H5.5C4.12 14 3 15.12 3 16.5V21H21V16.5Z" />
+                    </svg>
+                    <span class="text-xs font-bold text-green-dark tracking-wider">RUMAH LEBIH HIJAU, MASA DEPAN LEBIH
+                        BAIK</span>
+                </div>
+
+                <!-- Headline -->
+                <h1
+                    class="animate-fade-in-up delay-100 text-4xl sm:text-5xl lg:text-6xl font-heading font-extrabold text-green-dark leading-[1.1] mb-6 drop-shadow-sm">
+                    Sampah Dapur<br>Punya Masa Depan<br>
+                    <span class="text-terracotta">yang Lebih Baik</span>
+                </h1>
+
+                <!-- Description -->
+                <p class="animate-fade-in-up delay-200 text-brown-medium text-lg mb-8 max-w-[90%]">
+                    WORMI adalah komposter dapur mini dengan bantuan cacing untuk mengolah sisa sayur & buah jadi
+                    kompos. Praktis, bebas bau, dan cocok untuk rumah modern di kota.
+                </p>
+
+                <!-- Actions -->
+                <div class="animate-fade-in-up delay-300 flex flex-col sm:flex-row gap-4 mb-4">
+                    <a href="produk.html"
+                        class="bg-green-dark text-white px-8 py-3.5 rounded-full font-heading font-bold flex items-center justify-center gap-2 hover:bg-green-darker hover:-translate-y-1 transition-all duration-300 shadow-lg shadow-green-dark/20">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z">
+                            </path>
+                        </svg>
+                        Pesan Sekarang &rarr;
+                    </a>
+                    <a href="cara-pakai.html"
+                        class="bg-white/90 backdrop-blur-sm text-brown-dark border border-gray-200 px-8 py-3.5 rounded-full font-heading font-bold flex items-center justify-center gap-2 hover:border-green-dark hover:text-green-dark hover:-translate-y-1 transition-all duration-300 shadow-sm">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M8 5V19L19 12L8 5Z" />
+                        </svg>
+                        Lihat Cara Kerja
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== MENGAPA WORMI? ===================== -->
+    <section class="py-20 bg-white reveal">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row gap-12 lg:gap-20 items-center">
+                <!-- Left Text -->
+                <div class="w-full lg:w-[35%]">
+                    <div
+                        class="inline-flex items-center gap-2 bg-cream rounded-full px-4 py-1.5 mb-6 border border-black/5">
+                        <svg class="w-4 h-4 text-brown-dark" fill="none" stroke="currentColor" stroke-width="2"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <span class="text-xs font-bold text-brown-dark tracking-wider">MENGAPA WORMI?</span>
+                    </div>
+                    <h2 class="text-3xl md:text-4xl font-heading font-bold text-green-dark mb-6 leading-tight">
+                        Solusi Sederhana untuk<br><span class="text-terracotta">Masalah Besar</span>
+                    </h2>
+                    <p class="text-brown-medium mb-8 leading-relaxed">
+                        Setiap hari, sampah organik dari dapur menumpuk di tempat pembuangan. WORMI membantu kamu
+                        mengubahnya menjadi kompos yang bermanfaat, langsung dari rumah.
+                    </p>
+                    <a href="produk.html"
+                        class="inline-flex items-center border-b-2 border-green-dark pb-1 font-heading font-bold text-green-dark hover:text-terracotta hover:border-terracotta transition-colors gap-2">
+                        Pelajari Lebih Lanjut &rarr;
+                    </a>
+                </div>
+
+                <!-- Right Cards -->
+                <div class="w-full lg:w-[65%] grid grid-cols-1 sm:grid-cols-3 gap-6">
+                    <!-- Masalah -->
+                    <div
+                        class="bg-peach-light p-8 rounded-[2rem] text-center hover-lift flex flex-col items-center justify-center">
+                        <img src="assets/why-wormi-masalah.png" alt="Masalah Sampah Organik"
+                            class="h-28 mb-6 object-contain hover:scale-110 transition-transform duration-300 drop-shadow-md">
+                        <h3 class="font-heading font-bold text-xl text-terracotta mb-3">Masalah</h3>
+                        <p class="text-sm text-brown-medium">Sampah organik menyumbang porsi besar sampah rumah, tapi
+                            orang kota tak punya lahan.</p>
+                    </div>
+
+                    <!-- Solusi -->
+                    <div
+                        class="bg-green-light p-8 rounded-[2rem] text-center hover-lift flex flex-col items-center justify-center">
+                        <img src="assets/why-wormi-solusi.png" alt="Solusi WORMI"
+                            class="h-28 mb-6 object-contain hover:scale-110 transition-transform duration-300 drop-shadow-md">
+                        <h3 class="font-heading font-bold text-xl text-green-dark mb-3">Solusi</h3>
+                        <p class="text-sm text-brown-medium">WORMI hadir praktis, bebas bau, dan mudah digunakan di
+                            ruang sangat terbatas.</p>
+                    </div>
+
+                    <!-- Dampak -->
+                    <div
+                        class="bg-cream p-8 rounded-[2rem] text-center hover-lift flex flex-col items-center justify-center border border-black/5">
+                        <img src="assets/why-wormi-dampak.png" alt="Dampak WORMI"
+                            class="h-28 mb-6 object-contain hover:scale-110 transition-transform duration-300 drop-shadow-md">
+                        <h3 class="font-heading font-bold text-xl text-brown-dark mb-3">Dampak</h3>
+                        <p class="text-sm text-brown-medium">Mengurangi sampah ke TPA, menyuburkan tanaman, dukung gaya
+                            hidup berkelanjutan.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== FITUR UNGGULAN ===================== -->
+    <section class="py-20 bg-cream reveal">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12">
+                <div>
+                    <div
+                        class="inline-flex items-center gap-2 bg-white rounded-full px-4 py-1.5 mb-6 border border-black/5 shadow-sm">
+                        <svg class="w-4 h-4 text-brown-dark" fill="none" stroke="currentColor" stroke-width="2"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                        </svg>
+                        <span class="text-xs font-bold text-brown-dark tracking-wider">FITUR UNGGULAN</span>
+                    </div>
+                    <h2 class="text-3xl md:text-4xl font-heading font-bold text-green-dark leading-tight">
+                        Desain yang Fungsional,<br>untuk Hidup <span class="text-terracotta">Lebih Praktis</span>
+                    </h2>
+                </div>
+                <a href="produk.html"
+                    class="inline-flex items-center border-b-2 border-green-dark pb-1 font-heading font-bold text-green-dark hover:text-terracotta hover:border-terracotta transition-colors gap-2 mt-6 md:mt-0">
+                    Lihat Semua Fitur &rarr;
+                </a>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-4 lg:gap-6">
+                <!-- Fitur 1 -->
+                <div
+                    class="bg-white rounded-3xl overflow-hidden shadow-soft hover-lift flex flex-col pb-6 border border-black/5">
+                    <div class="h-44 flex items-center justify-center p-2 mb-2">
+                        <img src="assets/fitur-unggulan-1.png"
+                            class="h-full object-contain hover:scale-105 transition-transform duration-300 drop-shadow-sm"
+                            alt="Desain Bertingkat">
+                    </div>
+                    <h3 class="font-heading font-bold text-base text-brown-dark mb-1 px-4 text-center">Desain Bertingkat
+                    </h3>
+                    <p class="text-xs text-brown-medium px-4 text-center">Kapasitas optimal dalam ukuran mini.</p>
+                </div>
+                <!-- Fitur 2 -->
+                <div
+                    class="bg-white rounded-3xl overflow-hidden shadow-soft hover-lift flex flex-col pb-6 border border-black/5">
+                    <div class="h-44 flex items-center justify-center p-2 mb-2">
+                        <img src="assets/fitur-unggulan-2.png"
+                            class="h-full object-contain hover:scale-105 transition-transform duration-300 drop-shadow-sm"
+                            alt="Ventilasi Udara">
+                    </div>
+                    <h3 class="font-heading font-bold text-base text-brown-dark mb-1 px-4 text-center">Ventilasi Udara
+                    </h3>
+                    <p class="text-xs text-brown-medium px-4 text-center">Menjaga proses pengomposan tetap sehat dan
+                        bebas bau.</p>
+                </div>
+                <!-- Fitur 3 -->
+                <div
+                    class="bg-white rounded-3xl overflow-hidden shadow-soft hover-lift flex flex-col pb-6 border border-black/5">
+                    <div class="h-44 flex items-center justify-center p-2 mb-2">
+                        <img src="assets/fitur-unggulan-3.png"
+                            class="h-full object-contain hover:scale-105 transition-transform duration-300 drop-shadow-sm"
+                            alt="Keran Lindi">
+                    </div>
+                    <h3 class="font-heading font-bold text-base text-brown-dark mb-1 px-4 text-center">Keran Penampung
+                        Lindi</h3>
+                    <p class="text-xs text-brown-medium px-4 text-center">Air lindi tertampung rapi, tidak mengotori
+                        area.</p>
+                </div>
+                <!-- Fitur 4 -->
+                <div
+                    class="bg-white rounded-3xl overflow-hidden shadow-soft hover-lift flex flex-col pb-6 border border-black/5">
+                    <div class="h-44 flex items-center justify-center p-2 mb-2">
+                        <img src="assets/fitur-unggulan-4.png"
+                            class="h-full object-contain hover:scale-105 transition-transform duration-300 drop-shadow-sm"
+                            alt="Karakter Cacing">
+                    </div>
+                    <h3 class="font-heading font-bold text-base text-brown-dark mb-1 px-4 text-center">Desain Karakter
+                        Cacing</h3>
+                    <p class="text-xs text-brown-medium px-4 text-center">Lucu, cocok untuk hiasan kos & rumah.</p>
+                </div>
+                <!-- Fitur 5 -->
+                <div
+                    class="bg-white rounded-3xl overflow-hidden shadow-soft hover-lift flex flex-col pb-6 border border-black/5 col-span-2 md:col-span-1">
+                    <div class="h-44 flex items-center justify-center p-2 mb-2">
+                        <img src="assets/fitur-unggulan-5.png"
+                            class="h-full object-contain hover:scale-105 transition-transform duration-300 drop-shadow-sm"
+                            alt="Ukuran Compact">
+                    </div>
+                    <h3 class="font-heading font-bold text-base text-brown-dark mb-1 px-4 text-center">Ukuran Compact
+                    </h3>
+                    <p class="text-xs text-brown-medium px-4 text-center">Hemat tempat, mudah disimpan di dapur/balkon.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== CARA PAKAI ===================== -->
+    <section class="py-20 bg-white reveal">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16">
+                <div>
+                    <div
+                        class="inline-flex items-center gap-2 bg-cream rounded-full px-4 py-1.5 mb-6 border border-black/5">
+                        <svg class="w-4 h-4 text-brown-dark" fill="none" stroke="currentColor" stroke-width="2"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                        </svg>
+                        <span class="text-xs font-bold text-brown-dark tracking-wider">CARA PAKAI</span>
+                    </div>
+                    <h2 class="text-3xl md:text-4xl font-heading font-bold text-green-dark leading-tight">
+                        Mulai Mengolah Sampah Organik dalam 5 Langkah
+                    </h2>
+                </div>
+                <a href="cara-pakai.html"
+                    class="inline-flex items-center border-b-2 border-green-dark pb-1 font-heading font-bold text-green-dark hover:text-terracotta hover:border-terracotta transition-colors gap-2 mt-6 md:mt-0">
+                    Lihat Panduan Lengkap &rarr;
+                </a>
+            </div>
+
+            <div class="flex flex-col md:flex-row justify-between items-center md:items-start gap-8">
+                <!-- Step 1 -->
+                <div class="flex-1 text-center relative group w-full md:w-auto">
+                    <div class="relative inline-block mb-5">
+                        <div class="w-36 h-36 mx-auto rounded-full bg-cream-dark/40 flex items-center justify-center p-3">
+                            <img src="assets/cara-pakai-1.png" alt="Langkah 1"
+                                class="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300 drop-shadow-sm">
+                        </div>
+                        <div class="step-badge bg-terracotta text-white">1</div>
+                    </div>
+                    <h3 class="font-heading font-bold text-base text-brown-dark mb-1">Masukkan</h3>
+                    <p class="text-xs text-brown-medium leading-relaxed">sisa sayur & buah</p>
+                </div>
+                <!-- Step 2 -->
+                <div class="flex-1 text-center relative group w-full md:w-auto">
+                    <div class="relative inline-block mb-5">
+                        <div class="w-36 h-36 mx-auto rounded-full bg-cream-dark/40 flex items-center justify-center p-3">
+                            <img src="assets/cara-pakai-2.png" alt="Langkah 2"
+                                class="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300 drop-shadow-sm">
+                        </div>
+                        <div class="step-badge bg-terracotta text-white">2</div>
+                    </div>
+                    <h3 class="font-heading font-bold text-base text-brown-dark mb-1">Tutup kembali</h3>
+                    <p class="text-xs text-brown-medium leading-relaxed">dan biarkan proses berjalan</p>
+                </div>
+                <!-- Step 3 -->
+                <div class="flex-1 text-center relative group w-full md:w-auto">
+                    <div class="relative inline-block mb-5">
+                        <div class="w-36 h-36 mx-auto rounded-full bg-cream-dark/40 flex items-center justify-center p-3">
+                            <img src="assets/cara-pakai-3.png" alt="Langkah 3"
+                                class="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300 drop-shadow-sm">
+                        </div>
+                        <div class="step-badge bg-terracotta text-white">3</div>
+                    </div>
+                    <h3 class="font-heading font-bold text-base text-brown-dark mb-1">Ambil air lindi</h3>
+                    <p class="text-xs text-brown-medium leading-relaxed">secara berkala (jika ada)</p>
+                </div>
+                <!-- Step 4 -->
+                <div class="flex-1 text-center relative group w-full md:w-auto">
+                    <div class="relative inline-block mb-5">
+                        <div class="w-36 h-36 mx-auto rounded-full bg-cream-dark/40 flex items-center justify-center p-3">
+                            <img src="assets/cara-pakai-4.png" alt="Langkah 4"
+                                class="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300 drop-shadow-sm">
+                        </div>
+                        <div class="step-badge bg-terracotta text-white">4</div>
+                    </div>
+                    <h3 class="font-heading font-bold text-base text-brown-dark mb-1">Setelah beberapa minggu,</h3>
+                    <p class="text-xs text-brown-medium leading-relaxed">kompos siap digunakan</p>
+                </div>
+                <!-- Step 5 -->
+                <div class="flex-1 text-center relative group w-full md:w-auto">
+                    <div class="relative inline-block mb-5">
+                        <div class="w-36 h-36 mx-auto rounded-full bg-cream-dark/40 flex items-center justify-center p-3">
+                            <img src="assets/cara-pakai-5.png" alt="Langkah 5"
+                                class="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300 drop-shadow-sm">
+                        </div>
+                        <div class="step-badge bg-terracotta text-white">5</div>
+                    </div>
+                    <h3 class="font-heading font-bold text-base text-brown-dark mb-1">Gunakan</h3>
+                    <p class="text-xs text-brown-medium leading-relaxed">untuk tanaman kesayangan</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== FOOTER ===================== -->
+    <footer class="bg-green-dark text-white relative pt-20 pb-8 mt-16 md:mt-24">
+        <!-- Earth/Soil Top Shape -->
+        <div class="absolute top-0 left-0 w-full overflow-hidden leading-none -translate-y-[99%]">
+            <svg class="relative block w-full h-[40px] md:h-[80px]" xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 1200 80" preserveAspectRatio="none">
+                <!-- Soil surface with gentle bumps -->
+                <path
+                    d="M0,80 L0,52 C40,50 60,46 100,48 C140,50 160,42 200,40 C240,38 280,44 320,46 C360,48 400,38 440,36 C480,34 520,42 560,44 C600,46 640,36 680,34 C720,32 760,40 800,42 C840,44 880,36 920,34 C960,32 1000,38 1040,40 C1080,42 1120,36 1160,38 L1200,40 L1200,80 Z"
+                    fill="#2F4A3D"></path>
+                <!-- Subtle darker soil layer underneath -->
+                <path
+                    d="M0,80 L0,58 C50,56 80,54 120,56 C160,58 200,50 240,48 C280,46 320,52 360,54 C400,56 440,48 480,46 C520,44 560,50 600,52 C640,54 680,46 720,44 C760,42 800,48 840,50 C880,52 920,46 960,44 C1000,42 1040,48 1080,50 C1120,52 1160,48 1200,50 L1200,80 Z"
+                    fill="#243B30" opacity="0.4"></path>
+            </svg>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-8 mb-12">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center">
+                    <img src="assets/logo-alt.png" alt="WORMI Logo" class="h-14 w-auto">
+                </div>
+
+                <!-- Links -->
+                <div class="flex flex-wrap justify-center gap-x-8 gap-y-4 text-sm font-heading font-semibold">
+                    <a href="index.html" class="hover:text-terracotta transition-colors">Beranda</a>
+                    <a href="produk.html" class="hover:text-terracotta transition-colors">Produk</a>
+                    <a href="cara-pakai.html" class="hover:text-terracotta transition-colors">Cara Pakai</a>
+                    <a href="blog.html" class="hover:text-terracotta transition-colors">Blog</a>
+                    <a href="testimoni.html" class="hover:text-terracotta transition-colors">Testimoni</a>
+                    <a href="eco-events.html" class="hover:text-terracotta transition-colors">Eco Events</a>
+                    <a href="faq.html" class="hover:text-terracotta transition-colors">FAQ</a>
+                </div>
+
+                <!-- Social Icons -->
+                <div class="flex gap-4">
+                    <!-- Instagram -->
+                    <a href="#"
+                        class="social-icon bg-white text-green-dark w-10 h-10 rounded-full flex items-center justify-center hover:bg-terracotta hover:text-white shadow-sm">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                            <path fill-rule="evenodd"
+                                d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z"
+                                clip-rule="evenodd" />
+                        </svg>
+                    </a>
+                    <!-- WhatsApp -->
+                    <a href="#"
+                        class="social-icon bg-white text-green-dark w-10 h-10 rounded-full flex items-center justify-center hover:bg-terracotta hover:text-white shadow-sm">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
+                        </svg>
+                    </a>
+                    <!-- Email -->
+                    <a href="#"
+                        class="social-icon bg-white text-green-dark w-10 h-10 rounded-full flex items-center justify-center hover:bg-terracotta hover:text-white shadow-sm">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                        </svg>
+                    </a>
+                    <!-- Youtube -->
+                    <a href="#"
+                        class="social-icon bg-white text-green-dark w-10 h-10 rounded-full flex items-center justify-center hover:bg-terracotta hover:text-white shadow-sm">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.5 12 3.5 12 3.5s-7.505 0-9.377.55a3.015 3.015 0 0 0-2.122 2.136C0 8.07 0 12 0 12s0 3.93-.501 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.55 9.377.55 9.377.55s7.505 0 9.377-.55a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Bottom Line & Copyright -->
+            <div
+                class="border-t border-white/20 pt-6 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-semibold">
+                <div class="text-white/80">
+                    &copy; 2026 WORMI. Semua hak dilindungi.
+                </div>
+                <div class="text-white/80 flex items-center gap-1">
+                    Untuk masa depan yang lebih hijau. <span class="text-base leading-none">🌱</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===================== SCRIPTS ===================== -->
+    <script>
+        // Navbar shadow on scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 20) {
+                nav.classList.add('navbar-scrolled');
+            } else {
+                nav.classList.remove('navbar-scrolled');
+            }
+        });
+
+        // Mobile Menu Toggle
+        const btn = document.getElementById('mobile-menu-btn');
+        const closeBtn = document.getElementById('close-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.remove('translate-x-full');
+        });
+        closeBtn.addEventListener('click', () => {
+            menu.classList.add('translate-x-full');
+        });
+
+        // Update Cart Badge from localStorage
+        function updateCartBadge() {
+            const cartStr = localStorage.getItem('wormi_cart');
+            let count = 0;
+            if (cartStr) {
+                try {
+                    const cart = JSON.parse(cartStr);
+                    count = cart.reduce((sum, item) => sum + item.qty, 0);
+                } catch (e) { }
+            }
+            const desktopBadge = document.getElementById('cart-badge-desktop');
+            const mobileBadge = document.getElementById('cart-badge-mobile');
+
+            if (count > 0) {
+                desktopBadge.textContent = count;
+                desktopBadge.classList.remove('hidden');
+                mobileBadge.textContent = count;
+                mobileBadge.classList.remove('hidden');
+            } else {
+                desktopBadge.classList.add('hidden');
+                mobileBadge.classList.add('hidden');
+            }
+        }
+
+        // Scroll-reveal observer
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+        document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+        // Initialize
+        updateCartBadge();
+    </script>
+</body>
+
+</html>
