@@ -169,6 +169,18 @@
             -webkit-box-orient: vertical;
             overflow: hidden;
         }
+        
+        /* Custom scrollbar for modal */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background-color: #D98B6B;
+            border-radius: 20px;
+        }
     </style>
 </head>
 
@@ -849,6 +861,80 @@
         </div>
     </footer>
 
+    <!-- ===================== MODAL PENDAFTARAN ===================== -->
+    <div id="registration-modal" class="fixed inset-0 z-[100] flex items-center justify-center hidden opacity-0 transition-opacity duration-300">
+        <!-- Overlay -->
+        <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" onclick="closeRegistrationModal()"></div>
+        
+        <!-- Modal Content -->
+        <div class="relative bg-white w-full max-w-xl mx-4 rounded-[2rem] shadow-2xl overflow-hidden transform scale-95 transition-transform duration-300" id="registration-modal-content">
+            <!-- Header -->
+            <div class="bg-green-light px-8 py-6 flex justify-between items-center border-b border-black/5">
+                <div>
+                    <h3 class="font-heading font-bold text-2xl text-green-dark">Form Pendaftaran</h3>
+                    <p class="text-sm text-brown-medium mt-1 font-semibold line-clamp-1" id="modal-event-title">Event Name</p>
+                </div>
+                <button onclick="closeRegistrationModal()" class="text-brown-medium hover:text-terracotta transition-colors bg-white w-10 h-10 rounded-full flex items-center justify-center shadow-sm flex-shrink-0">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+                </button>
+            </div>
+            
+            <!-- Body Form -->
+            <div class="p-8 max-h-[70vh] overflow-y-auto custom-scrollbar">
+                <form id="registration-form" class="space-y-5" onsubmit="submitRegistration(event)">
+                    <div>
+                        <label class="block text-sm font-bold text-brown-dark mb-1.5">Nama Lengkap <span class="text-terracotta">*</span></label>
+                        <input type="text" id="reg-name" required class="w-full px-5 py-3 rounded-xl border border-black/10 focus:outline-none focus:border-green-dark focus:ring-1 focus:ring-green-dark transition-colors bg-cream" placeholder="Masukkan nama lengkap">
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                        <div>
+                            <label class="block text-sm font-bold text-brown-dark mb-1.5">No. WhatsApp <span class="text-terracotta">*</span></label>
+                            <input type="tel" id="reg-wa" required class="w-full px-5 py-3 rounded-xl border border-black/10 focus:outline-none focus:border-green-dark focus:ring-1 focus:ring-green-dark transition-colors bg-cream" placeholder="08...">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold text-brown-dark mb-1.5">Email <span class="text-terracotta">*</span></label>
+                            <input type="email" id="reg-email" required class="w-full px-5 py-3 rounded-xl border border-black/10 focus:outline-none focus:border-green-dark focus:ring-1 focus:ring-green-dark transition-colors bg-cream" placeholder="email@contoh.com">
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-bold text-brown-dark mb-1.5">Profesi / Instansi</label>
+                        <input type="text" class="w-full px-5 py-3 rounded-xl border border-black/10 focus:outline-none focus:border-green-dark focus:ring-1 focus:ring-green-dark transition-colors bg-cream" placeholder="Contoh: Mahasiswa Telkom University">
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-bold text-brown-dark mb-1.5">Alasan Mengikuti Event</label>
+                        <textarea rows="3" class="w-full px-5 py-3 rounded-xl border border-black/10 focus:outline-none focus:border-green-dark focus:ring-1 focus:ring-green-dark transition-colors bg-cream resize-none" placeholder="Ceritakan singkat motivasi Anda..."></textarea>
+                    </div>
+                    
+                    <div class="pt-4">
+                        <button type="submit" class="w-full bg-green-dark text-white py-4 rounded-xl font-heading font-bold text-lg hover:bg-green-darker hover:-translate-y-0.5 transition-all shadow-md flex items-center justify-center gap-2">
+                            Kirim Pendaftaran
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================== SUCCESS NOTIFICATION ===================== -->
+    <div id="success-modal" class="fixed inset-0 z-[110] flex items-center justify-center hidden opacity-0 transition-opacity duration-300">
+        <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" onclick="closeSuccessModal()"></div>
+        <div class="relative bg-white w-full max-w-sm mx-4 rounded-[2rem] shadow-2xl p-8 text-center transform scale-95 transition-transform duration-300" id="success-modal-content">
+            <div class="w-20 h-20 bg-green-light rounded-full flex items-center justify-center mx-auto mb-5 animate-float">
+                <svg class="w-10 h-10 text-green-dark" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
+            </div>
+            <h3 class="font-heading font-bold text-2xl text-green-dark mb-2">Pendaftaran Berhasil!</h3>
+            <p class="text-brown-medium text-sm leading-relaxed mb-8">
+                Terima kasih, <strong id="success-name" class="text-brown-dark"></strong>! Tiket dan detail acara telah dikirim ke WhatsApp dan Email Anda.
+            </p>
+            <button onclick="closeSuccessModal()" class="w-full bg-green-dark text-white py-3 rounded-xl font-heading font-bold hover:bg-green-darker transition-colors">
+                Tutup Notifikasi
+            </button>
+        </div>
+    </div>
+
     <!-- ===================== SCRIPTS ===================== -->
     <script>
         // Navbar shadow on scroll
@@ -909,6 +995,84 @@
         }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 
         document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+        // --- Modal & Registration Logic ---
+        const regModal = document.getElementById('registration-modal');
+        const regModalContent = document.getElementById('registration-modal-content');
+        const successModal = document.getElementById('success-modal');
+        const successModalContent = document.getElementById('success-modal-content');
+        
+        // Attach click listener to all "Daftar Sekarang" buttons
+        document.querySelectorAll('.bg-white.rounded-\\[1\\.5rem\\]').forEach(card => {
+            const btn = card.querySelector('a');
+            if (btn && btn.textContent.includes('Daftar Sekarang')) {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const title = card.querySelector('h3').textContent;
+                    openRegistrationModal(title);
+                });
+            }
+        });
+        
+        window.openRegistrationModal = (eventName) => {
+            document.getElementById('modal-event-title').textContent = eventName;
+            document.getElementById('registration-form').reset();
+            
+            regModal.classList.remove('hidden');
+            // Small delay to allow display:block to apply before animating opacity
+            setTimeout(() => {
+                regModal.classList.remove('opacity-0');
+                regModalContent.classList.remove('scale-95');
+                regModalContent.classList.add('scale-100');
+            }, 10);
+            
+            // Prevent body scroll
+            document.body.style.overflow = 'hidden';
+        };
+        
+        window.closeRegistrationModal = () => {
+            regModal.classList.add('opacity-0');
+            regModalContent.classList.remove('scale-100');
+            regModalContent.classList.add('scale-95');
+            
+            setTimeout(() => {
+                regModal.classList.add('hidden');
+                document.body.style.overflow = '';
+            }, 300);
+        };
+        
+        window.submitRegistration = (e) => {
+            e.preventDefault();
+            
+            // Get Name
+            const name = document.getElementById('reg-name').value;
+            document.getElementById('success-name').textContent = name;
+            
+            // Close Reg Modal
+            closeRegistrationModal();
+            
+            // Show Success Modal
+            setTimeout(() => {
+                successModal.classList.remove('hidden');
+                setTimeout(() => {
+                    successModal.classList.remove('opacity-0');
+                    successModalContent.classList.remove('scale-95');
+                    successModalContent.classList.add('scale-100');
+                }, 10);
+                document.body.style.overflow = 'hidden'; // Keep body hidden
+            }, 300);
+        };
+        
+        window.closeSuccessModal = () => {
+            successModal.classList.add('opacity-0');
+            successModalContent.classList.remove('scale-100');
+            successModalContent.classList.add('scale-95');
+            
+            setTimeout(() => {
+                successModal.classList.add('hidden');
+                document.body.style.overflow = '';
+            }, 300);
+        };
     </script>
 </body>
 
