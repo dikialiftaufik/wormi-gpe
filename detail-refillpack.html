@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WORMI Refill Pack — Detail Produk Cocopeat & Bioaktivator Isi Ulang</title>
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <meta name="description" content="Detail Produk WORMI Refill Pack. Paket isi ulang berisi cocopeat 1 kg dan bioaktivator 250ml untuk komposter WORMI Anda.">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        terracotta: '#D98B6B', 'terracotta-light': '#E8A584',
+                        'green-dark': '#2F4A3D', 'green-darker': '#243B30', 'green-light': '#E8F3EF',
+                        cream: '#FDFBF7', 'cream-dark': '#EDE5D4',
+                        'brown-dark': '#4A3728', 'brown-medium': '#6B5344', 'peach-light': '#FFF5F2',
+                    },
+                    fontFamily: { heading: ['Quicksand', 'sans-serif'], body: ['Nunito', 'sans-serif'] },
+                    boxShadow: { 'soft': '0 4px 20px rgba(0,0,0,0.05)', 'hover': '0 10px 30px rgba(0,0,0,0.08)' }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        * { box-sizing: border-box; }
+        body { font-family: 'Nunito', sans-serif; background-color: #FDFBF7; color: #4A3728; }
+        h1,h2,h3,h4,h5,h6 { font-family: 'Quicksand', sans-serif; }
+        html { scroll-behavior: smooth; }
+        .navbar-scrolled { box-shadow: 0 2px 20px rgba(74,55,40,0.05); background: rgba(253,251,247,0.95); backdrop-filter: blur(10px); }
+
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes floatY { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+        .animate-fade-in-up { animation: fadeInUp 0.7s ease-out both; }
+        .delay-100 { animation-delay: 0.1s; } .delay-200 { animation-delay: 0.2s; }
+        .animate-float { animation: floatY 3s ease-in-out infinite; }
+
+        .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+        .reveal.revealed { opacity: 1; transform: translateY(0); }
+
+        input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
+        input[type=number] { -moz-appearance: textfield; }
+
+        .tab-btn { position: relative; }
+        .tab-btn.active { color: #2F4A3D; }
+        .tab-btn.active::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: #D98B6B; border-radius: 3px 3px 0 0; }
+
+        .hover-lift { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .hover-lift:hover { transform: translateY(-6px); box-shadow: 0 12px 30px rgba(74,55,40,0.08); }
+        .social-icon { transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease; }
+        .social-icon:hover { transform: translateY(-3px); }
+        .product-card:hover .product-img { transform: scale(1.05); }
+    </style>
+</head>
+
+<body class="antialiased overflow-x-hidden">
+
+    <!-- ===================== NAVIGATION ===================== -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-cream/90 backdrop-blur-md border-b border-black/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <a href="index.html" class="flex-shrink-0 flex items-center"><img src="assets/logo.png" alt="WORMI Logo" class="h-10 w-auto"></a>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="font-heading font-semibold text-brown-medium hover:text-brown-dark transition-colors">Beranda</a>
+                    <a href="produk.html" class="font-heading font-bold text-brown-dark border-b-2 border-terracotta pb-1">Produk</a>
+                    <a href="cara-pakai.html" class="font-heading font-semibold text-brown-medium hover:text-brown-dark transition-colors">Cara Pakai</a>
+                    <a href="blog.html" class="font-heading font-semibold text-brown-medium hover:text-brown-dark transition-colors">Blog</a>
+                    <a href="testimoni.html" class="font-heading font-semibold text-brown-medium hover:text-brown-dark transition-colors">Testimoni</a>
+                    <a href="eco-events.html" class="font-heading font-semibold text-brown-medium hover:text-brown-dark transition-colors">Eco Events</a>
+                    <a href="faq.html" class="font-heading font-semibold text-brown-medium hover:text-brown-dark transition-colors">FAQ</a>
+                </div>
+                <div class="hidden md:flex items-center gap-6">
+                    <a href="keranjang.html" class="relative group">
+                        <svg class="w-6 h-6 text-brown-dark group-hover:text-terracotta transition-colors" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                        <span id="cart-badge-desktop" class="absolute -top-2 -right-2 bg-terracotta text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center hidden">0</span>
+                    </a>
+                    <a href="produk.html" class="bg-green-dark text-white px-6 py-2.5 rounded-full font-heading font-bold text-sm hover:bg-green-darker hover:-translate-y-0.5 transition-all duration-300 flex items-center gap-2 shadow-sm hover:shadow-md">Pesan Sekarang <span class="text-lg leading-none">&rarr;</span></a>
+                </div>
+                <div class="md:hidden flex items-center gap-4">
+                    <a href="keranjang.html" class="relative">
+                        <svg class="w-6 h-6 text-brown-dark" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                        <span id="cart-badge-mobile" class="absolute -top-2 -right-2 bg-terracotta text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center hidden">0</span>
+                    </a>
+                    <button id="mobile-menu-btn" class="text-brown-dark hover:text-terracotta transition-colors">
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="mobile-menu" class="fixed inset-0 bg-cream z-50 transform translate-x-full transition-transform duration-300 md:hidden">
+            <div class="flex justify-between items-center p-4 border-b border-black/5">
+                <img src="assets/logo.png" alt="WORMI" class="h-8 w-auto">
+                <button id="close-menu-btn" class="text-brown-dark"><svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
+            </div>
+            <div class="flex flex-col p-6 space-y-6">
+                <a href="index.html" class="font-heading font-bold text-xl text-brown-medium">Beranda</a>
+                <a href="produk.html" class="font-heading font-bold text-xl text-brown-dark">Produk</a>
+                <a href="cara-pakai.html" class="font-heading font-bold text-xl text-brown-medium">Cara Pakai</a>
+                <a href="blog.html" class="font-heading font-bold text-xl text-brown-medium">Blog</a>
+                <a href="testimoni.html" class="font-heading font-bold text-xl text-brown-medium">Testimoni</a>
+                <a href="eco-events.html" class="font-heading font-bold text-xl text-brown-medium">Eco Events</a>
+                <a href="faq.html" class="font-heading font-bold text-xl text-brown-medium">FAQ</a>
+                <hr class="border-black/5">
+                <a href="produk.html" class="bg-green-dark text-white px-6 py-3 rounded-full font-heading font-bold text-center">Pesan Sekarang</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ===================== PRODUCT DETAIL ===================== -->
+    <section class="pt-28 pb-8 md:pt-32 md:pb-12 bg-cream relative overflow-hidden">
+        <div class="absolute top-20 right-0 w-72 h-72 bg-green-light/30 rounded-full blur-3xl -z-10 animate-float"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <nav class="text-sm text-brown-medium mb-8 animate-fade-in-up" aria-label="Breadcrumb">
+                <ol class="flex items-center gap-2">
+                    <li><a href="index.html" class="hover:text-green-dark transition-colors">Beranda</a></li>
+                    <li class="text-brown-medium/50">&rsaquo;</li>
+                    <li><a href="produk.html" class="hover:text-green-dark transition-colors">Produk</a></li>
+                    <li class="text-brown-medium/50">&rsaquo;</li>
+                    <li class="font-semibold text-brown-dark">WORMI Refill Pack</li>
+                </ol>
+            </nav>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16">
+                <!-- Image -->
+                <div class="animate-fade-in-up delay-100">
+                    <div class="aspect-square bg-white rounded-[2.5rem] border border-black/5 flex items-center justify-center p-12 overflow-hidden shadow-soft relative group">
+                        <img src="assets/product-cocopeat.png" alt="WORMI Refill Pack" class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105">
+                        <div class="absolute top-6 left-6 bg-green-dark text-white text-xs font-bold px-3.5 py-1.5 rounded-full flex items-center gap-1.5 shadow-sm">
+                            <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z"/></svg>
+                            Hemat & Praktis
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Info -->
+                <div class="flex flex-col justify-center animate-fade-in-up delay-200">
+                    <h1 class="text-3xl md:text-4xl font-heading font-extrabold text-green-dark leading-tight mb-3">WORMI Refill Pack</h1>
+                    <div class="flex items-center gap-3 mb-2">
+                        <div class="flex items-center gap-1">
+                            <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                            <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                            <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                            <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                            <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        </div>
+                        <span class="text-sm font-bold text-brown-dark">4.7</span>
+                        <span class="text-sm text-brown-medium">(60+ ulasan)</span>
+                    </div>
+
+                    <p class="text-3xl font-heading font-extrabold text-terracotta mb-4">Rp 55.000</p>
+                    <p class="text-brown-medium text-base leading-relaxed mb-6">Paket isi ulang yang berisi cocopeat (serbuk sabut kelapa) 1 kg dan bioaktivator 250ml. Memastikan proses pengomposan tetap optimal. Cocok untuk penggunaan jangka panjang.</p>
+
+                    <!-- Qty + Cart Inline -->
+                    <div class="mb-6">
+                        <p class="text-sm font-bold text-brown-dark mb-3">Jumlah</p>
+                        <div class="flex items-center gap-4">
+                            <div class="flex items-center bg-white border border-black/10 rounded-full overflow-hidden shadow-sm h-[52px] flex-shrink-0">
+                                <button type="button" onclick="updateQty(-1)" class="w-12 h-full flex items-center justify-center text-brown-medium hover:text-terracotta hover:bg-gray-50 transition-colors">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M20 12H4"/></svg>
+                                </button>
+                                <input type="number" id="product-qty" value="1" min="1" class="w-12 h-full text-center font-bold text-lg text-brown-dark focus:outline-none bg-transparent" readonly>
+                                <button type="button" onclick="updateQty(1)" class="w-12 h-full flex items-center justify-center text-brown-medium hover:text-green-dark hover:bg-gray-50 transition-colors">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
+                                </button>
+                            </div>
+                            <button onclick="handleAddToCart()" class="flex-1 bg-green-dark text-white h-[52px] rounded-full font-heading font-bold text-base hover:bg-green-darker hover:-translate-y-0.5 transition-all shadow-md flex items-center justify-center gap-2.5">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+                                Masukkan Keranjang
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-wrap items-center gap-6 pt-4 border-t border-black/5">
+                        <div class="flex items-center gap-2 text-sm text-brown-medium">
+                            <svg class="w-5 h-5 text-green-dark" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                            Pengiriman aman
+                        </div>
+                        <div class="flex items-center gap-2 text-sm text-brown-medium">
+                            <svg class="w-5 h-5 text-green-dark" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/></svg>
+                            100% Alami
+                        </div>
+                        <div class="flex items-center gap-2 text-sm text-brown-medium">
+                            <svg class="w-5 h-5 text-green-dark" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99"/></svg>
+                            Isi Ulang Hemat
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== TABS ===================== -->
+    <section class="py-12 md:py-16 bg-white border-t border-black/5 reveal">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex border-b border-black/10 mb-10 overflow-x-auto" style="scrollbar-width:none;">
+                <button class="tab-btn active px-6 py-4 font-heading font-bold text-brown-dark whitespace-nowrap transition-colors" onclick="switchTab('deskripsi',this)">Deskripsi Produk</button>
+                <button class="tab-btn px-6 py-4 font-heading font-bold text-brown-medium whitespace-nowrap hover:text-green-dark transition-colors" onclick="switchTab('cara-pakai',this)">Cara Pakai</button>
+                <button class="tab-btn px-6 py-4 font-heading font-bold text-brown-medium whitespace-nowrap hover:text-green-dark transition-colors" onclick="switchTab('spesifikasi',this)">Spesifikasi</button>
+            </div>
+
+            <div id="tab-deskripsi" class="tab-content">
+                <h2 class="text-2xl font-heading font-extrabold text-green-dark mb-4">Isi Ulang untuk <span class="text-terracotta">Komposter Optimal</span></h2>
+                <p class="text-brown-medium leading-relaxed mb-4">WORMI Refill Pack adalah paket isi ulang yang dirancang untuk menjaga performa komposter WORMI Anda tetap optimal. Paket ini berisi cocopeat (serbuk sabut kelapa) sebanyak 1 kg yang berfungsi menyerap kelembapan dan mengendalikan bau, serta bioaktivator 250ml untuk mempercepat dekomposisi sampah organik.</p>
+                <p class="text-brown-medium leading-relaxed">Dengan penggunaan rutin, satu paket refill cukup untuk 1-2 bulan pemakaian aktif. Pilihan hemat dan praktis untuk pengguna setia WORMI!</p>
+            </div>
+
+            <div id="tab-cara-pakai" class="tab-content hidden">
+                <div class="space-y-5 max-w-2xl">
+                    <div class="flex gap-5 items-start">
+                        <div class="w-10 h-10 rounded-full bg-green-light text-green-dark font-extrabold flex items-center justify-center flex-shrink-0 text-lg">1</div>
+                        <div><h4 class="font-heading font-bold text-brown-dark mb-1">Siapkan Cocopeat</h4><p class="text-brown-medium leading-relaxed">Ambil secukupnya cocopeat dari kemasan. Setiap kali menambah sampah organik, taburkan lapisan tipis ±2 cm di atasnya.</p></div>
+                    </div>
+                    <div class="flex gap-5 items-start">
+                        <div class="w-10 h-10 rounded-full bg-green-light text-green-dark font-extrabold flex items-center justify-center flex-shrink-0 text-lg">2</div>
+                        <div><h4 class="font-heading font-bold text-brown-dark mb-1">Semprotkan Bioaktivator</h4><p class="text-brown-medium leading-relaxed">Kocok botol bioaktivator, lalu semprotkan 3-5 kali secara merata di atas sampah organik sebelum menutup komposter.</p></div>
+                    </div>
+                    <div class="flex gap-5 items-start">
+                        <div class="w-10 h-10 rounded-full bg-green-light text-green-dark font-extrabold flex items-center justify-center flex-shrink-0 text-lg">3</div>
+                        <div><h4 class="font-heading font-bold text-brown-dark mb-1">Simpan Sisa dengan Benar</h4><p class="text-brown-medium leading-relaxed">Simpan sisa cocopeat di tempat kering dan tertutup. Bioaktivator disimpan di suhu ruangan, hindari paparan sinar matahari langsung.</p></div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="tab-spesifikasi" class="tab-content hidden">
+                <div class="space-y-3 max-w-md">
+                    <div class="flex justify-between py-2 border-b border-black/5"><span class="text-brown-medium font-semibold">Isi Paket</span><span class="text-brown-dark font-bold">Cocopeat + Bioaktivator</span></div>
+                    <div class="flex justify-between py-2 border-b border-black/5"><span class="text-brown-medium font-semibold">Berat Cocopeat</span><span class="text-brown-dark font-bold">1 kg</span></div>
+                    <div class="flex justify-between py-2 border-b border-black/5"><span class="text-brown-medium font-semibold">Volume Bioaktivator</span><span class="text-brown-dark font-bold">250 ml</span></div>
+                    <div class="flex justify-between py-2 border-b border-black/5"><span class="text-brown-medium font-semibold">Daya Tahan</span><span class="text-brown-dark font-bold">1-2 Bulan Pemakaian</span></div>
+                    <div class="flex justify-between py-2"><span class="text-brown-medium font-semibold">Kemasan</span><span class="text-brown-dark font-bold">Pouch Kraft + Botol Spray</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== PRODUK LAINNYA ===================== -->
+    <section class="py-12 md:py-16 bg-cream border-t border-black/5 reveal">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center mb-8">
+                <h2 class="text-2xl md:text-3xl font-heading font-extrabold text-green-dark">Produk Lainnya dari <span class="text-terracotta">WORMI</span></h2>
+                <a href="produk.html" class="text-sm font-heading font-bold text-green-dark hover:text-terracotta transition-colors flex items-center gap-1">Lihat Semua Produk <span class="text-lg leading-none">&rarr;</span></a>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <a href="detail-produk.html" class="product-card flex bg-white rounded-[1.5rem] border border-black/5 shadow-soft hover-lift overflow-hidden group">
+                    <div class="w-36 h-36 bg-green-light/30 flex items-center justify-center p-4 flex-shrink-0"><img src="assets/product-hero.png" alt="WORMI Starter Pack" class="product-img w-full h-full object-contain transition-transform duration-500"></div>
+                    <div class="p-5 flex flex-col justify-center">
+                        <h3 class="font-heading font-bold text-lg text-brown-dark mb-1">WORMI Starter Pack</h3>
+                        <p class="text-sm text-brown-medium mb-2">Paket lengkap untuk mulai mengelola sampah dapur.</p>
+                        <p class="text-xl font-heading font-extrabold text-terracotta mb-3">Rp 249.000</p>
+                        <span class="inline-flex items-center gap-1 text-sm font-heading font-bold text-green-dark group-hover:text-terracotta transition-colors">Lihat Produk <span class="text-base leading-none">&rarr;</span></span>
+                    </div>
+                </a>
+                <a href="detail-bioaktivator.html" class="product-card flex bg-white rounded-[1.5rem] border border-black/5 shadow-soft hover-lift overflow-hidden group">
+                    <div class="w-36 h-36 bg-cream flex items-center justify-center p-4 flex-shrink-0"><img src="assets/product-bioaktivator.jpeg" alt="WORMI Bioaktivator" class="product-img w-full h-full object-contain transition-transform duration-500"></div>
+                    <div class="p-5 flex flex-col justify-center">
+                        <h3 class="font-heading font-bold text-lg text-brown-dark mb-1">WORMI Bioaktivator</h3>
+                        <p class="text-sm text-brown-medium mb-2">Cairan alami untuk mempercepat proses pengomposan.</p>
+                        <p class="text-xl font-heading font-extrabold text-terracotta mb-3">Rp 25.000</p>
+                        <span class="inline-flex items-center gap-1 text-sm font-heading font-bold text-green-dark group-hover:text-terracotta transition-colors">Lihat Produk <span class="text-base leading-none">&rarr;</span></span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== CART MODAL ===================== -->
+    <div id="cart-success-modal" class="fixed inset-0 z-[110] flex items-center justify-center hidden opacity-0 transition-opacity duration-300">
+        <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" onclick="closeCartModal()"></div>
+        <div class="relative bg-white w-full max-w-sm mx-4 rounded-[2rem] shadow-2xl p-8 text-center transform scale-95 transition-transform duration-300" id="cart-success-content">
+            <div class="w-20 h-20 bg-green-light rounded-full flex items-center justify-center mx-auto mb-5 animate-float"><svg class="w-10 h-10 text-green-dark" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></div>
+            <h3 class="font-heading font-bold text-2xl text-green-dark mb-2">Berhasil Ditambahkan!</h3>
+            <p class="text-brown-medium text-sm leading-relaxed mb-6"><strong>WORMI Refill Pack</strong> telah ditambahkan ke keranjang Anda.</p>
+            <div class="flex flex-col gap-3">
+                <a href="keranjang.html" class="w-full bg-green-dark text-white py-3.5 rounded-xl font-heading font-bold hover:bg-green-darker transition-colors shadow-md">Lihat Keranjang</a>
+                <button onclick="closeCartModal()" class="w-full bg-white border border-black/10 text-brown-dark py-3.5 rounded-xl font-heading font-bold hover:bg-gray-50 transition-colors">Lanjut Belanja</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================== FOOTER ===================== -->
+    <footer class="bg-green-dark text-white relative pt-20 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12 mb-16">
+                <div class="space-y-6"><img src="assets/logo.png" alt="WORMI" class="h-12 w-auto brightness-0 invert"><p class="text-white/80 text-sm leading-relaxed pr-4">WORMI menyediakan solusi pengolahan sampah rumah tangga yang praktis, estetik, dan tidak berbau.</p></div>
+                <div><h4 class="font-heading font-bold text-xl mb-6 text-terracotta">Eksplorasi</h4><ul class="space-y-4 text-sm text-white/80"><li><a href="produk.html" class="hover:text-white transition-colors">Produk Kami</a></li><li><a href="cara-pakai.html" class="hover:text-white transition-colors">Panduan Kompos</a></li><li><a href="blog.html" class="hover:text-white transition-colors">Artikel Edukasi</a></li><li><a href="eco-events.html" class="hover:text-white transition-colors">Event & Komunitas</a></li></ul></div>
+                <div><h4 class="font-heading font-bold text-xl mb-6 text-terracotta">Bantuan</h4><ul class="space-y-4 text-sm text-white/80"><li><a href="faq.html" class="hover:text-white transition-colors">FAQ</a></li><li><a href="#" class="hover:text-white transition-colors">Syarat & Ketentuan</a></li><li><a href="#" class="hover:text-white transition-colors">Kebijakan Privasi</a></li><li><a href="#" class="hover:text-white transition-colors">Hubungi Kami</a></li></ul></div>
+                <div><h4 class="font-heading font-bold text-xl mb-6 text-terracotta">Media Sosial</h4><div class="flex gap-4"><a href="#" class="social-icon bg-white text-green-dark w-10 h-10 rounded-full flex items-center justify-center hover:bg-terracotta hover:text-white shadow-sm"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" clip-rule="evenodd"/></svg></a><a href="#" class="social-icon bg-white text-green-dark w-10 h-10 rounded-full flex items-center justify-center hover:bg-terracotta hover:text-white shadow-sm"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.5 12 3.5 12 3.5s-7.505 0-9.377.55a3.015 3.015 0 0 0-2.122 2.136C0 8.07 0 12 0 12s0 3.93-.501 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.55 9.377.55 9.377.55s7.505 0 9.377-.55a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a></div></div>
+            </div>
+            <div class="border-t border-white/20 pt-6 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-semibold">
+                <div class="text-white/80">&copy; 2026 WORMI. Semua hak dilindungi.</div>
+                <div class="text-white/80 flex items-center gap-1">Untuk masa depan yang lebih hijau. <span class="text-base leading-none">🌱</span></div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        window.addEventListener('scroll', () => { document.getElementById('navbar').classList.toggle('navbar-scrolled', window.scrollY > 20); });
+        document.getElementById('mobile-menu-btn').addEventListener('click', () => document.getElementById('mobile-menu').classList.remove('translate-x-full'));
+        document.getElementById('close-menu-btn').addEventListener('click', () => document.getElementById('mobile-menu').classList.add('translate-x-full'));
+
+        function updateCartBadge() {
+            const cartStr = localStorage.getItem('wormi_cart'); let count = 0;
+            if (cartStr) { try { count = JSON.parse(cartStr).reduce((s,i)=>s+i.qty,0); } catch(e){} }
+            ['cart-badge-desktop','cart-badge-mobile'].forEach(id => { const el=document.getElementById(id); if(count>0){el.textContent=count;el.classList.remove('hidden');}else{el.classList.add('hidden');} });
+        }
+        updateCartBadge();
+
+        const qtyInput = document.getElementById('product-qty');
+        function updateQty(d) { let v = Math.max(1, (parseInt(qtyInput.value)||1)+d); qtyInput.value = v; }
+
+        function switchTab(id, btn) {
+            document.querySelectorAll('.tab-content').forEach(c => c.classList.add('hidden'));
+            document.getElementById('tab-' + id).classList.remove('hidden');
+            document.querySelectorAll('.tab-btn').forEach(b => { b.classList.remove('active','text-brown-dark'); b.classList.add('text-brown-medium'); });
+            btn.classList.add('active','text-brown-dark'); btn.classList.remove('text-brown-medium');
+        }
+
+        const cartModal = document.getElementById('cart-success-modal');
+        const cartContent = document.getElementById('cart-success-content');
+        function handleAddToCart() {
+            const qty = parseInt(qtyInput.value)||1;
+            let cart = []; const cs = localStorage.getItem('wormi_cart');
+            if(cs){try{cart=JSON.parse(cs);}catch(e){}}
+            const ex = cart.find(i=>i.id==='refill-pack');
+            if(ex) ex.qty+=qty; else cart.push({id:'refill-pack',name:'WORMI Refill Pack',price:55000,qty});
+            localStorage.setItem('wormi_cart',JSON.stringify(cart));
+            updateCartBadge();
+            cartModal.classList.remove('hidden');
+            setTimeout(()=>{cartModal.classList.remove('opacity-0');cartContent.classList.remove('scale-95');cartContent.classList.add('scale-100');},10);
+            document.body.style.overflow='hidden';
+        }
+        window.closeCartModal = () => {
+            cartModal.classList.add('opacity-0'); cartContent.classList.remove('scale-100'); cartContent.classList.add('scale-95');
+            setTimeout(()=>{cartModal.classList.add('hidden');document.body.style.overflow='';},300);
+        };
+
+        const revealObserver = new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('revealed');revealObserver.unobserve(e.target);}});},{threshold:0.12,rootMargin:'0px 0px -40px 0px'});
+        document.querySelectorAll('.reveal').forEach(el=>revealObserver.observe(el));
+    </script>
+</body>
+</html>

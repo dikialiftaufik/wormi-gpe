@@ -1,0 +1,1105 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WORMI Starter Pack — Detail Produk Komposter Dapur Mini</title>
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <meta name="description"
+        content="Detail Produk WORMI Starter Pack. Komposter dapur mini lengkap untuk mengolah sisa sayur & buah menjadi kompos. Tersedia 4 pilihan warna.">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Nunito:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        terracotta: '#D98B6B',
+                        'terracotta-light': '#E8A584',
+                        'green-dark': '#2F4A3D',
+                        'green-darker': '#243B30',
+                        'green-light': '#E8F3EF',
+                        cream: '#FDFBF7',
+                        'cream-dark': '#EDE5D4',
+                        'brown-dark': '#4A3728',
+                        'brown-medium': '#6B5344',
+                        'peach-light': '#FFF5F2',
+                    },
+                    fontFamily: {
+                        heading: ['Quicksand', 'sans-serif'],
+                        body: ['Nunito', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px rgba(0, 0, 0, 0.05)',
+                        'hover': '0 10px 30px rgba(0, 0, 0, 0.08)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background-color: #FDFBF7;
+            color: #4A3728;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: 'Quicksand', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .navbar-scrolled {
+            box-shadow: 0 2px 20px rgba(74, 55, 40, 0.05);
+            background: rgba(253, 251, 247, 0.95);
+            backdrop-filter: blur(10px);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(24px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes floatY {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-8px);
+            }
+        }
+
+        .animate-fade-in-up {
+            animation: fadeInUp 0.7s ease-out both;
+        }
+
+        .delay-100 {
+            animation-delay: 0.1s;
+        }
+
+        .delay-200 {
+            animation-delay: 0.2s;
+        }
+
+        .delay-300 {
+            animation-delay: 0.3s;
+        }
+
+        .animate-float {
+            animation: floatY 3s ease-in-out infinite;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .reveal.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        input[type=number]::-webkit-inner-spin-button,
+        input[type=number]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        input[type=number] {
+            -moz-appearance: textfield;
+        }
+
+        .tab-btn {
+            position: relative;
+        }
+
+        .tab-btn.active {
+            color: #2F4A3D;
+        }
+
+        .tab-btn.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: #D98B6B;
+            border-radius: 3px 3px 0 0;
+        }
+
+        .color-option {
+            transition: all 0.25s ease;
+        }
+
+        .color-option.active {
+            border-color: #2F4A3D !important;
+            box-shadow: 0 0 0 2px #2F4A3D;
+        }
+
+        .hover-lift {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .hover-lift:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 30px rgba(74, 55, 40, 0.08);
+        }
+
+        .social-icon {
+            transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .social-icon:hover {
+            transform: translateY(-3px);
+        }
+
+        .product-card:hover .product-img {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+
+<body class="antialiased overflow-x-hidden">
+
+    <!-- ===================== NAVIGATION ===================== -->
+    <nav id="navbar"
+        class="fixed w-full z-50 transition-all duration-300 bg-cream/90 backdrop-blur-md border-b border-black/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <a href="index.html" class="flex-shrink-0 flex items-center">
+                    <img src="assets/logo.png" alt="WORMI Logo" class="h-10 w-auto">
+                </a>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html"
+                        class="font-heading font-semibold text-brown-medium hover:text-brown-dark transition-colors">Beranda</a>
+                    <a href="produk.html"
+                        class="font-heading font-bold text-brown-dark border-b-2 border-terracotta pb-1">Produk</a>
+                    <a href="cara-pakai.html"
+                        class="font-heading font-semibold text-brown-medium hover:text-brown-dark transition-colors">Cara
+                        Pakai</a>
+                    <a href="blog.html"
+                        class="font-heading font-semibold text-brown-medium hover:text-brown-dark transition-colors">Blog</a>
+                    <a href="testimoni.html"
+                        class="font-heading font-semibold text-brown-medium hover:text-brown-dark transition-colors">Testimoni</a>
+                    <a href="eco-events.html"
+                        class="font-heading font-semibold text-brown-medium hover:text-brown-dark transition-colors">Eco
+                        Events</a>
+                    <a href="faq.html"
+                        class="font-heading font-semibold text-brown-medium hover:text-brown-dark transition-colors">FAQ</a>
+                </div>
+                <div class="hidden md:flex items-center gap-6">
+                    <a href="keranjang.html" class="relative group">
+                        <svg class="w-6 h-6 text-brown-dark group-hover:text-terracotta transition-colors" fill="none"
+                            stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z">
+                            </path>
+                        </svg>
+                        <span id="cart-badge-desktop"
+                            class="absolute -top-2 -right-2 bg-terracotta text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center hidden">0</span>
+                    </a>
+                    <a href="produk.html"
+                        class="bg-green-dark text-white px-6 py-2.5 rounded-full font-heading font-bold text-sm hover:bg-green-darker hover:-translate-y-0.5 transition-all duration-300 flex items-center gap-2 shadow-sm hover:shadow-md">
+                        Pesan Sekarang <span class="text-lg leading-none">&rarr;</span>
+                    </a>
+                </div>
+                <div class="md:hidden flex items-center gap-4">
+                    <a href="keranjang.html" class="relative">
+                        <svg class="w-6 h-6 text-brown-dark" fill="none" stroke="currentColor" stroke-width="2"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z">
+                            </path>
+                        </svg>
+                        <span id="cart-badge-mobile"
+                            class="absolute -top-2 -right-2 bg-terracotta text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center hidden">0</span>
+                    </a>
+                    <button id="mobile-menu-btn" class="text-brown-dark hover:text-terracotta transition-colors">
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Panel -->
+        <div id="mobile-menu"
+            class="fixed inset-0 bg-cream z-50 transform translate-x-full transition-transform duration-300 md:hidden">
+            <div class="flex justify-between items-center p-4 border-b border-black/5">
+                <img src="assets/logo.png" alt="WORMI" class="h-8 w-auto">
+                <button id="close-menu-btn" class="text-brown-dark">
+                    <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+            <div class="flex flex-col p-6 space-y-6">
+                <a href="index.html" class="font-heading font-bold text-xl text-brown-medium">Beranda</a>
+                <a href="produk.html" class="font-heading font-bold text-xl text-brown-dark">Produk</a>
+                <a href="cara-pakai.html" class="font-heading font-bold text-xl text-brown-medium">Cara Pakai</a>
+                <a href="blog.html" class="font-heading font-bold text-xl text-brown-medium">Blog</a>
+                <a href="testimoni.html" class="font-heading font-bold text-xl text-brown-medium">Testimoni</a>
+                <a href="eco-events.html" class="font-heading font-bold text-xl text-brown-medium">Eco Events</a>
+                <a href="faq.html" class="font-heading font-bold text-xl text-brown-medium">FAQ</a>
+                <hr class="border-black/5">
+                <a href="produk.html"
+                    class="bg-green-dark text-white px-6 py-3 rounded-full font-heading font-bold text-center">Pesan
+                    Sekarang</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ===================== PRODUCT DETAIL HERO ===================== -->
+    <section class="pt-28 pb-8 md:pt-32 md:pb-12 bg-cream relative overflow-hidden">
+        <div class="absolute top-20 right-0 w-72 h-72 bg-green-light/30 rounded-full blur-3xl -z-10 animate-float">
+        </div>
+        <div class="absolute bottom-0 left-0 w-56 h-56 bg-peach-light/40 rounded-full blur-3xl -z-10"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <!-- Breadcrumb -->
+            <nav class="text-sm text-brown-medium mb-8 animate-fade-in-up" aria-label="Breadcrumb">
+                <ol class="flex items-center gap-2">
+                    <li><a href="index.html" class="hover:text-green-dark transition-colors">Beranda</a></li>
+                    <li class="text-brown-medium/50">&rsaquo;</li>
+                    <li><a href="produk.html" class="hover:text-green-dark transition-colors">Produk</a></li>
+                    <li class="text-brown-medium/50">&rsaquo;</li>
+                    <li class="font-semibold text-brown-dark">WORMI Starter Pack</li>
+                </ol>
+            </nav>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16">
+
+                <!-- ===== LEFT: Image Gallery ===== -->
+                <div class="space-y-4 animate-fade-in-up delay-100">
+                    <div
+                        class="aspect-square bg-white rounded-[2.5rem] border border-black/5 flex items-center justify-center p-8 overflow-hidden shadow-soft relative group">
+                        <img src="assets/product-hero.png" id="main-product-img" alt="WORMI Starter Pack — Terracotta"
+                            class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105">
+                        <div
+                            class="absolute top-6 left-6 bg-terracotta text-white text-xs font-bold px-3.5 py-1.5 rounded-full flex items-center gap-1.5 shadow-sm">
+                            <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                            </svg>
+                            Terlaris
+                        </div>
+                    </div>
+                    <!-- Thumbnails -->
+                    <div class="grid grid-cols-5 gap-3">
+                        <button
+                            class="thumbnail-btn aspect-square bg-white rounded-2xl border-2 border-green-dark p-1.5 cursor-pointer shadow-sm transition-all"
+                            onclick="changeImage('assets/product-hero.png', this)">
+                            <img src="assets/product-hero.png" alt="WORMI Front"
+                                class="w-full h-full object-contain rounded-xl">
+                        </button>
+                        <button
+                            class="thumbnail-btn aspect-square bg-white rounded-2xl border-2 border-transparent p-1.5 cursor-pointer shadow-sm hover:border-terracotta/50 transition-all"
+                            onclick="changeImage('assets/product-cutaway.png', this)">
+                            <img src="assets/product-cutaway.png" alt="WORMI Cutaway"
+                                class="w-full h-full object-contain rounded-xl">
+                        </button>
+                        <button
+                            class="thumbnail-btn aspect-square bg-white rounded-2xl border-2 border-transparent p-1.5 cursor-pointer shadow-sm hover:border-terracotta/50 transition-all"
+                            onclick="changeImage('assets/product-detail-keran.png', this)">
+                            <img src="assets/product-detail-keran.png" alt="WORMI Keran"
+                                class="w-full h-full object-contain rounded-xl">
+                        </button>
+                        <button
+                            class="thumbnail-btn aspect-square bg-white rounded-2xl border-2 border-transparent p-1.5 cursor-pointer shadow-sm hover:border-terracotta/50 transition-all"
+                            onclick="changeImage('assets/product-detail-ventilasi.png', this)">
+                            <img src="assets/product-detail-ventilasi.png" alt="WORMI Ventilasi"
+                                class="w-full h-full object-contain rounded-xl">
+                        </button>
+                        <button
+                            class="thumbnail-btn aspect-square bg-white rounded-2xl border-2 border-transparent p-1.5 cursor-pointer shadow-sm hover:border-terracotta/50 transition-all"
+                            onclick="changeImage('assets/product-lifestyle.png', this)">
+                            <img src="assets/product-lifestyle.png" alt="WORMI Lifestyle"
+                                class="w-full h-full object-contain rounded-xl">
+                        </button>
+                    </div>
+                </div>
+
+                <!-- ===== RIGHT: Product Info ===== -->
+                <div class="flex flex-col justify-center animate-fade-in-up delay-200">
+                    <h1 class="text-3xl md:text-4xl font-heading font-extrabold text-green-dark leading-tight mb-3">
+                        WORMI Komposter Dapur Mini
+                    </h1>
+
+                    <!-- Rating & Price -->
+                    <div class="flex items-center gap-3 mb-2">
+                        <div class="flex items-center gap-1">
+                            <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                            </svg>
+                            <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                            </svg>
+                            <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                            </svg>
+                            <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                            </svg>
+                            <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                            </svg>
+                        </div>
+                        <span class="text-sm font-bold text-brown-dark">4.9</span>
+                        <span class="text-sm text-brown-medium">(120+ ulasan)</span>
+
+                    </div>
+
+                    <p class="text-3xl font-heading font-extrabold text-terracotta mb-4">Rp 249.000</p>
+
+                    <p class="text-brown-medium text-base leading-relaxed mb-6">
+                        Solusi praktis untuk mengolah sampah dapur menjadi kompos padat dan pupuk cair, langsung dari
+                        rumah kamu. Desainnya ringkas, mudah digunakan, dan cocok untuk gaya hidup minimalis.
+                    </p>
+
+                    <!-- ===== Color Picker ===== -->
+                    <div class="mb-6">
+                        <p class="text-sm font-bold text-brown-dark mb-3">Pilih Warna</p>
+                        <div class="flex gap-4">
+                            <button
+                                class="color-option active rounded-2xl border-2 border-green-dark p-2 bg-white cursor-pointer"
+                                onclick="selectColor('terracotta', this)" title="Terracotta">
+                                <img src="assets/product-hero.png" alt="Terracotta" class="w-16 h-16 object-contain">
+                                <p class="text-[11px] font-bold text-center mt-1 text-brown-dark">Terracotta</p>
+                            </button>
+                            <button
+                                class="color-option rounded-2xl border-2 border-transparent p-2 bg-white cursor-pointer hover:border-brown-medium/30"
+                                onclick="selectColor('sage', this)" title="Sage Green">
+                                <img src="assets/product-sage.png" alt="Sage Green" class="w-16 h-16 object-contain">
+                                <p class="text-[11px] font-bold text-center mt-1 text-brown-medium">Sage Green</p>
+                            </button>
+                            <button
+                                class="color-option rounded-2xl border-2 border-transparent p-2 bg-white cursor-pointer hover:border-brown-medium/30"
+                                onclick="selectColor('beige', this)" title="Beige">
+                                <img src="assets/product-beige.png" alt="Beige" class="w-16 h-16 object-contain">
+                                <p class="text-[11px] font-bold text-center mt-1 text-brown-medium">Beige</p>
+                            </button>
+                            <button
+                                class="color-option rounded-2xl border-2 border-transparent p-2 bg-white cursor-pointer hover:border-brown-medium/30"
+                                onclick="selectColor('charcoal', this)" title="Charcoal">
+                                <img src="assets/product-charcoal.png" alt="Charcoal" class="w-16 h-16 object-contain">
+                                <p class="text-[11px] font-bold text-center mt-1 text-brown-medium">Charcoal</p>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- ===== Quantity + Add to Cart (Inline) ===== -->
+                    <div class="mb-6">
+                        <p class="text-sm font-bold text-brown-dark mb-3">Jumlah</p>
+                        <div class="flex items-center gap-4">
+                            <div
+                                class="flex items-center bg-white border border-black/10 rounded-full overflow-hidden shadow-sm h-[52px] flex-shrink-0">
+                                <button type="button" onclick="updateQty(-1)"
+                                    class="w-12 h-full flex items-center justify-center text-brown-medium hover:text-terracotta hover:bg-gray-50 transition-colors">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M20 12H4" />
+                                    </svg>
+                                </button>
+                                <input type="number" id="product-qty" value="1" min="1"
+                                    class="w-12 h-full text-center font-bold text-lg text-brown-dark focus:outline-none bg-transparent"
+                                    readonly>
+                                <button type="button" onclick="updateQty(1)"
+                                    class="w-12 h-full flex items-center justify-center text-brown-medium hover:text-green-dark hover:bg-gray-50 transition-colors">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
+                                    </svg>
+                                </button>
+                            </div>
+                            <button onclick="handleAddToCart()"
+                                class="flex-1 bg-green-dark text-white h-[52px] rounded-full font-heading font-bold text-base hover:bg-green-darker hover:-translate-y-0.5 transition-all shadow-md flex items-center justify-center gap-2.5">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                                </svg>
+                                Masukkan Keranjang
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Trust Badges -->
+                    <div class="flex flex-wrap items-center gap-6 pt-4 border-t border-black/5">
+                        <div class="flex items-center gap-2 text-sm text-brown-medium">
+                            <svg class="w-5 h-5 text-green-dark" fill="none" stroke="currentColor" stroke-width="1.5"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            Pengiriman aman ke seluruh Indonesia
+                        </div>
+                        <div class="flex items-center gap-2 text-sm text-brown-medium">
+                            <svg class="w-5 h-5 text-green-dark" fill="none" stroke="currentColor" stroke-width="1.5"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
+                            </svg>
+                            Pembayaran 100% aman
+                        </div>
+                        <div class="flex items-center gap-2 text-sm text-brown-medium">
+                            <svg class="w-5 h-5 text-green-dark" fill="none" stroke="currentColor" stroke-width="1.5"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z" />
+                            </svg>
+                            Garansi produk 6 bulan
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== TABS SECTION ===================== -->
+    <section class="py-12 md:py-16 bg-white border-t border-black/5 reveal">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Tab Buttons -->
+            <div class="flex border-b border-black/10 mb-10 overflow-x-auto" style="scrollbar-width: none;">
+                <button
+                    class="tab-btn active px-6 py-4 font-heading font-bold text-brown-dark whitespace-nowrap transition-colors"
+                    onclick="switchTab('deskripsi', this)">Deskripsi Produk</button>
+                <button
+                    class="tab-btn px-6 py-4 font-heading font-bold text-brown-medium whitespace-nowrap hover:text-green-dark transition-colors"
+                    onclick="switchTab('cara-pakai', this)">Cara Pakai</button>
+                <button
+                    class="tab-btn px-6 py-4 font-heading font-bold text-brown-medium whitespace-nowrap hover:text-green-dark transition-colors"
+                    onclick="switchTab('spesifikasi', this)">Spesifikasi</button>
+                <button
+                    class="tab-btn px-6 py-4 font-heading font-bold text-brown-medium whitespace-nowrap hover:text-green-dark transition-colors"
+                    onclick="switchTab('ulasan', this)">Ulasan</button>
+                <button
+                    class="tab-btn px-6 py-4 font-heading font-bold text-brown-medium whitespace-nowrap hover:text-green-dark transition-colors"
+                    onclick="switchTab('faq', this)">FAQ</button>
+            </div>
+
+            <!-- Tab: Deskripsi -->
+            <div id="tab-deskripsi" class="tab-content">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
+                    <div>
+                        <h2 class="text-2xl md:text-3xl font-heading font-extrabold text-green-dark mb-4 leading-tight">
+                            Ubah Sampah Dapur<br>Menjadi <span class="text-terracotta">Manfaat Nyata</span></h2>
+                        <p class="text-brown-medium leading-relaxed mb-4">
+                            WORMI Komposter Dapur Mini membantu kamu mengelola sisa sayur dan buah menjadi kompos padat
+                            dan pupuk cair dengan mudah, tanpa bau, dan tanpa memerlukan lahan luas. Cocok untuk rumah,
+                            apartemen, kos, maupun ruang terbatas lainnya.
+                        </p>
+                        <p class="text-brown-medium leading-relaxed">
+                            Dengan sistem susun 3 tingkat dan kran pembuangan built-in, proses pengomposan menjadi lebih
+                            efisien dan higienis. Mulai langkah kecilmu menuju gaya hidup <em>zero-waste</em>!
+                        </p>
+                    </div>
+                    <div class="grid grid-cols-2 gap-3">
+                        <img src="assets/product-lifestyle.png" alt="WORMI di dapur"
+                            class="rounded-2xl shadow-soft object-cover h-48 w-full">
+                        <img src="assets/product-cutaway.png" alt="WORMI cutaway"
+                            class="rounded-2xl shadow-soft object-contain h-48 w-full bg-cream p-2">
+                        <img src="assets/product-detail-keran.png" alt="Detail keran"
+                            class="rounded-2xl shadow-soft object-cover h-48 w-full">
+                        <img src="assets/product-detail-ventilasi.png" alt="Detail ventilasi"
+                            class="rounded-2xl shadow-soft object-cover h-48 w-full">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab: Cara Pakai -->
+            <div id="tab-cara-pakai" class="tab-content hidden">
+                <div class="space-y-6 max-w-2xl">
+                    <div class="flex gap-5 items-start">
+                        <div
+                            class="w-10 h-10 rounded-full bg-green-light text-green-dark font-extrabold flex items-center justify-center flex-shrink-0 text-lg">
+                            1</div>
+                        <div>
+                            <h4 class="font-heading font-bold text-brown-dark mb-1">Potong Sampah Organik</h4>
+                            <p class="text-brown-medium leading-relaxed">Siapkan sisa dapur organik (sayur, buah).
+                                Potong menjadi bagian lebih kecil agar proses fermentasi lebih cepat.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-5 items-start">
+                        <div
+                            class="w-10 h-10 rounded-full bg-green-light text-green-dark font-extrabold flex items-center justify-center flex-shrink-0 text-lg">
+                            2</div>
+                        <div>
+                            <h4 class="font-heading font-bold text-brown-dark mb-1">Masukkan ke Komposter</h4>
+                            <p class="text-brown-medium leading-relaxed">Masukkan sampah organik ke dalam komposter.
+                                Semprotkan WORMI Bioaktivator (dijual terpisah) sebanyak 3-5 kali secara merata.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-5 items-start">
+                        <div
+                            class="w-10 h-10 rounded-full bg-green-light text-green-dark font-extrabold flex items-center justify-center flex-shrink-0 text-lg">
+                            3</div>
+                        <div>
+                            <h4 class="font-heading font-bold text-brown-dark mb-1">Taburi Refill Pack</h4>
+                            <p class="text-brown-medium leading-relaxed">Taburkan lapisan tipis serbuk refill pack /
+                                cocopeat (dijual terpisah) di atasnya untuk menyerap kelembapan dan mencegah bau.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-5 items-start">
+                        <div
+                            class="w-10 h-10 rounded-full bg-green-light text-green-dark font-extrabold flex items-center justify-center flex-shrink-0 text-lg">
+                            4</div>
+                        <div>
+                            <h4 class="font-heading font-bold text-brown-dark mb-1">Panen Kompos & Pupuk Cair</h4>
+                            <p class="text-brown-medium leading-relaxed">Tutup rapat komposter. Cairan lindi dapat
+                                dipanen setiap 3 hari melalui kran bawah. Kompos padat siap dipanen dalam 2-3 minggu.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab: Spesifikasi -->
+            <div id="tab-spesifikasi" class="tab-content hidden">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                    <div>
+                        <h4 class="font-heading font-bold text-brown-dark text-lg mb-4">Isi Box WORMI Starter Pack</h4>
+                        <ul class="space-y-3 text-brown-medium">
+                            <li class="flex items-start gap-3">
+                                <svg class="w-5 h-5 text-green-dark mt-0.5 flex-shrink-0" fill="none"
+                                    stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                                </svg>
+                                1x Wadah Komposter WORMI (Kapasitas 15L)
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <svg class="w-5 h-5 text-green-dark mt-0.5 flex-shrink-0" fill="none"
+                                    stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                                </svg>
+                                1x Kran pembuangan cairan (sudah terpasang)
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <svg class="w-5 h-5 text-green-dark mt-0.5 flex-shrink-0" fill="none"
+                                    stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                                </svg>
+                                1x Saringan stainless steel
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <svg class="w-5 h-5 text-green-dark mt-0.5 flex-shrink-0" fill="none"
+                                    stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                                </svg>
+                                1x Cetok plastik kecil
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <svg class="w-5 h-5 text-green-dark mt-0.5 flex-shrink-0" fill="none"
+                                    stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                                </svg>
+                                1x Buku Panduan Penggunaan
+                            </li>
+                        </ul>
+                        <p class="text-xs text-brown-medium/70 mt-4 italic">* Bioaktivator dan Refill Pack (cocopeat)
+                            dijual terpisah.</p>
+                    </div>
+                    <div>
+                        <h4 class="font-heading font-bold text-brown-dark text-lg mb-4">Spesifikasi Wadah</h4>
+                        <div class="space-y-3">
+                            <div class="flex justify-between py-2 border-b border-black/5">
+                                <span class="text-brown-medium font-semibold">Material</span>
+                                <span class="text-brown-dark font-bold">Plastik HDPE (Tahan Lama)</span>
+                            </div>
+                            <div class="flex justify-between py-2 border-b border-black/5">
+                                <span class="text-brown-medium font-semibold">Dimensi</span>
+                                <span class="text-brown-dark font-bold">30cm × 30cm × 40cm</span>
+                            </div>
+                            <div class="flex justify-between py-2 border-b border-black/5">
+                                <span class="text-brown-medium font-semibold">Kapasitas</span>
+                                <span class="text-brown-dark font-bold">15 Liter</span>
+                            </div>
+                            <div class="flex justify-between py-2 border-b border-black/5">
+                                <span class="text-brown-medium font-semibold">Tingkat Susun</span>
+                                <span class="text-brown-dark font-bold">3 Tingkat + Basis</span>
+                            </div>
+                            <div class="flex justify-between py-2">
+                                <span class="text-brown-medium font-semibold">Pilihan Warna</span>
+                                <span class="text-brown-dark font-bold">4 Warna</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab: Ulasan -->
+            <div id="tab-ulasan" class="tab-content hidden">
+                <div class="space-y-6">
+                    <div class="bg-cream rounded-2xl p-6 border border-black/5">
+                        <div class="flex items-center gap-3 mb-3">
+                            <div
+                                class="w-10 h-10 rounded-full bg-green-dark text-white font-bold flex items-center justify-center">
+                                R</div>
+                            <div>
+                                <p class="font-bold text-brown-dark">Rina Kartika</p>
+                                <div class="flex items-center gap-1">
+                                    <svg class="w-3.5 h-3.5 text-yellow-400" fill="currentColor" viewBox="0 0 24 24">
+                                        <path
+                                            d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                                    </svg>
+                                    <svg class="w-3.5 h-3.5 text-yellow-400" fill="currentColor" viewBox="0 0 24 24">
+                                        <path
+                                            d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                                    </svg>
+                                    <svg class="w-3.5 h-3.5 text-yellow-400" fill="currentColor" viewBox="0 0 24 24">
+                                        <path
+                                            d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                                    </svg>
+                                    <svg class="w-3.5 h-3.5 text-yellow-400" fill="currentColor" viewBox="0 0 24 24">
+                                        <path
+                                            d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                                    </svg>
+                                    <svg class="w-3.5 h-3.5 text-yellow-400" fill="currentColor" viewBox="0 0 24 24">
+                                        <path
+                                            d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-brown-medium leading-relaxed">Awalnya ragu beli komposter karena takut bau, tapi
+                            ternyata WORMI tuh beneran nggak bau sama sekali! Desainnya juga lucu banget, jadi betah di
+                            dapur. Recommended banget!</p>
+                    </div>
+                    <div class="bg-cream rounded-2xl p-6 border border-black/5">
+                        <div class="flex items-center gap-3 mb-3">
+                            <div
+                                class="w-10 h-10 rounded-full bg-terracotta text-white font-bold flex items-center justify-center">
+                                A</div>
+                            <div>
+                                <p class="font-bold text-brown-dark">Ahmad Fajar</p>
+                                <div class="flex items-center gap-1">
+                                    <svg class="w-3.5 h-3.5 text-yellow-400" fill="currentColor" viewBox="0 0 24 24">
+                                        <path
+                                            d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                                    </svg>
+                                    <svg class="w-3.5 h-3.5 text-yellow-400" fill="currentColor" viewBox="0 0 24 24">
+                                        <path
+                                            d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                                    </svg>
+                                    <svg class="w-3.5 h-3.5 text-yellow-400" fill="currentColor" viewBox="0 0 24 24">
+                                        <path
+                                            d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                                    </svg>
+                                    <svg class="w-3.5 h-3.5 text-yellow-400" fill="currentColor" viewBox="0 0 24 24">
+                                        <path
+                                            d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                                    </svg>
+                                    <svg class="w-3.5 h-3.5 text-yellow-400" fill="currentColor" viewBox="0 0 24 24">
+                                        <path
+                                            d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-brown-medium leading-relaxed">Saya tinggal di kos-kosan, ternyata WORMI muat di
+                            pojok dapur kecil saya. Sudah jalan 2 bulan, pupuk cairnya saya pakai buat tanaman di
+                            balkon. Sangat puas!</p>
+                    </div>
+                    <div class="bg-cream rounded-2xl p-6 border border-black/5">
+                        <div class="flex items-center gap-3 mb-3">
+                            <div
+                                class="w-10 h-10 rounded-full bg-green-dark text-white font-bold flex items-center justify-center">
+                                D</div>
+                            <div>
+                                <p class="font-bold text-brown-dark">Dina Puspita</p>
+                                <div class="flex items-center gap-1">
+                                    <svg class="w-3.5 h-3.5 text-yellow-400" fill="currentColor" viewBox="0 0 24 24">
+                                        <path
+                                            d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                                    </svg>
+                                    <svg class="w-3.5 h-3.5 text-yellow-400" fill="currentColor" viewBox="0 0 24 24">
+                                        <path
+                                            d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                                    </svg>
+                                    <svg class="w-3.5 h-3.5 text-yellow-400" fill="currentColor" viewBox="0 0 24 24">
+                                        <path
+                                            d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                                    </svg>
+                                    <svg class="w-3.5 h-3.5 text-yellow-400" fill="currentColor" viewBox="0 0 24 24">
+                                        <path
+                                            d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                                    </svg>
+                                    <svg class="w-3.5 h-3.5 text-gray-300" fill="currentColor" viewBox="0 0 24 24">
+                                        <path
+                                            d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-brown-medium leading-relaxed">Kualitas wadahnya bagus dan kuat. Kran lindi-nya
+                            juga nggak bocor. Cuma butuh waktu adaptasi di awal buat rutin masukin sampah, tapi setelah
+                            itu jadi kebiasaan baik!</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab: FAQ -->
+            <div id="tab-faq" class="tab-content hidden">
+                <div class="space-y-4 max-w-2xl">
+                    <details class="bg-cream rounded-2xl border border-black/5 group">
+                        <summary
+                            class="cursor-pointer px-6 py-4 font-heading font-bold text-brown-dark flex justify-between items-center">
+                            Apakah komposter WORMI menimbulkan bau?
+                            <svg class="w-5 h-5 text-brown-medium group-open:rotate-180 transition-transform"
+                                fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </summary>
+                        <p class="px-6 pb-4 text-brown-medium leading-relaxed">Tidak. Sistem fermentasi tertutup WORMI
+                            dirancang agar tidak menimbulkan bau menyengat. Penggunaan bioaktivator dan refill pack juga
+                            membantu menekan bau secara alami.</p>
+                    </details>
+                    <details class="bg-cream rounded-2xl border border-black/5 group">
+                        <summary
+                            class="cursor-pointer px-6 py-4 font-heading font-bold text-brown-dark flex justify-between items-center">
+                            Apakah bioaktivator dan refill pack sudah termasuk?
+                            <svg class="w-5 h-5 text-brown-medium group-open:rotate-180 transition-transform"
+                                fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </summary>
+                        <p class="px-6 pb-4 text-brown-medium leading-relaxed">WORMI Starter Pack hanya mencakup wadah
+                            komposter dan perlengkapan dasar. Bioaktivator dan Refill Pack (cocopeat) dijual terpisah
+                            agar kamu bisa membeli sesuai kebutuhan.</p>
+                    </details>
+                    <details class="bg-cream rounded-2xl border border-black/5 group">
+                        <summary
+                            class="cursor-pointer px-6 py-4 font-heading font-bold text-brown-dark flex justify-between items-center">
+                            Berapa lama proses pengomposan?
+                            <svg class="w-5 h-5 text-brown-medium group-open:rotate-180 transition-transform"
+                                fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </summary>
+                        <p class="px-6 pb-4 text-brown-medium leading-relaxed">Pupuk cair bisa mulai dipanen setiap 3
+                            hari melalui kran bawah. Kompos padat akan siap dalam 2-3 minggu tergantung jenis bahan dan
+                            kondisi lingkungan.</p>
+                    </details>
+                    <details class="bg-cream rounded-2xl border border-black/5 group">
+                        <summary
+                            class="cursor-pointer px-6 py-4 font-heading font-bold text-brown-dark flex justify-between items-center">
+                            Cocok untuk ruangan kecil (kos / apartemen)?
+                            <svg class="w-5 h-5 text-brown-medium group-open:rotate-180 transition-transform"
+                                fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </summary>
+                        <p class="px-6 pb-4 text-brown-medium leading-relaxed">Sangat cocok! WORMI didesain kompak
+                            dengan dimensi 30x30x40cm. Bisa diletakkan di pojok dapur, balkon, atau bahkan di bawah
+                            meja.</p>
+                    </details>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== PRODUK LAINNYA ===================== -->
+    <section class="py-12 md:py-16 bg-cream border-t border-black/5 reveal">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center mb-8">
+                <h2 class="text-2xl md:text-3xl font-heading font-extrabold text-green-dark">Produk Lainnya dari <span
+                        class="text-terracotta">WORMI</span></h2>
+                <a href="produk.html"
+                    class="text-sm font-heading font-bold text-green-dark hover:text-terracotta transition-colors flex items-center gap-1">
+                    Lihat Semua Produk <span class="text-lg leading-none">&rarr;</span>
+                </a>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Bioaktivator -->
+                <a href="detail-bioaktivator.html"
+                    class="product-card flex bg-white rounded-[1.5rem] border border-black/5 shadow-soft hover-lift overflow-hidden group">
+                    <div class="w-36 h-36 bg-cream flex items-center justify-center p-4 flex-shrink-0">
+                        <img src="assets/product-bioaktivator.jpeg" alt="WORMI Bioaktivator"
+                            class="product-img w-full h-full object-contain transition-transform duration-500">
+                    </div>
+                    <div class="p-5 flex flex-col justify-center">
+                        <h3 class="font-heading font-bold text-lg text-brown-dark mb-1">WORMI Bioaktivator</h3>
+                        <p class="text-sm text-brown-medium mb-2 line-clamp-2">Cairan alami untuk mempercepat proses
+                            pengomposan.</p>
+                        <p class="text-xl font-heading font-extrabold text-terracotta mb-3">Rp 25.000</p>
+                        <span
+                            class="inline-flex items-center gap-1 text-sm font-heading font-bold text-green-dark group-hover:text-terracotta transition-colors">
+                            Lihat Produk <span class="text-base leading-none">&rarr;</span>
+                        </span>
+                    </div>
+                </a>
+                <!-- Refill Pack -->
+                <a href="detail-refillpack.html"
+                    class="product-card flex bg-white rounded-[1.5rem] border border-black/5 shadow-soft hover-lift overflow-hidden group">
+                    <div class="w-36 h-36 bg-cream flex items-center justify-center p-4 flex-shrink-0">
+                        <img src="assets/product-cocopeat.png" alt="WORMI Refill Pack"
+                            class="product-img w-full h-full object-contain transition-transform duration-500">
+                    </div>
+                    <div class="p-5 flex flex-col justify-center">
+                        <h3 class="font-heading font-bold text-lg text-brown-dark mb-1">WORMI Refill Pack</h3>
+                        <p class="text-sm text-brown-medium mb-2 line-clamp-2">Isi ulang bioaktivator dan cocopeat 1 kg.
+                        </p>
+                        <p class="text-xl font-heading font-extrabold text-terracotta mb-3">Rp 55.000</p>
+                        <span
+                            class="inline-flex items-center gap-1 text-sm font-heading font-bold text-green-dark group-hover:text-terracotta transition-colors">
+                            Lihat Produk <span class="text-base leading-none">&rarr;</span>
+                        </span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== SUCCESS ADD TO CART MODAL ===================== -->
+    <div id="cart-success-modal"
+        class="fixed inset-0 z-[110] flex items-center justify-center hidden opacity-0 transition-opacity duration-300">
+        <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" onclick="closeCartModal()"></div>
+        <div class="relative bg-white w-full max-w-sm mx-4 rounded-[2rem] shadow-2xl p-8 text-center transform scale-95 transition-transform duration-300"
+            id="cart-success-content">
+            <div
+                class="w-20 h-20 bg-green-light rounded-full flex items-center justify-center mx-auto mb-5 animate-float">
+                <svg class="w-10 h-10 text-green-dark" fill="none" stroke="currentColor" stroke-width="3"
+                    viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                </svg>
+            </div>
+            <h3 class="font-heading font-bold text-2xl text-green-dark mb-2">Berhasil Ditambahkan!</h3>
+            <p class="text-brown-medium text-sm leading-relaxed mb-6" id="cart-success-msg">
+                <strong>WORMI Starter Pack</strong> telah ditambahkan ke keranjang Anda.
+            </p>
+            <div class="flex flex-col gap-3">
+                <a href="keranjang.html"
+                    class="w-full bg-green-dark text-white py-3.5 rounded-xl font-heading font-bold hover:bg-green-darker transition-colors shadow-md">Lihat
+                    Keranjang</a>
+                <button onclick="closeCartModal()"
+                    class="w-full bg-white border border-black/10 text-brown-dark py-3.5 rounded-xl font-heading font-bold hover:bg-gray-50 transition-colors">Lanjut
+                    Belanja</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================== FOOTER ===================== -->
+    <footer class="bg-green-dark text-white relative pt-20 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12 mb-16">
+                <div class="space-y-6">
+                    <img src="assets/logo.png" alt="WORMI" class="h-12 w-auto brightness-0 invert">
+                    <p class="text-white/80 text-sm leading-relaxed pr-4">WORMI menyediakan solusi pengolahan sampah
+                        rumah tangga yang praktis, estetik, dan tidak berbau.</p>
+                </div>
+                <div>
+                    <h4 class="font-heading font-bold text-xl mb-6 text-terracotta">Eksplorasi</h4>
+                    <ul class="space-y-4 text-sm text-white/80">
+                        <li><a href="produk.html" class="hover:text-white transition-colors">Produk Kami</a></li>
+                        <li><a href="cara-pakai.html" class="hover:text-white transition-colors">Panduan Kompos</a></li>
+                        <li><a href="blog.html" class="hover:text-white transition-colors">Artikel Edukasi</a></li>
+                        <li><a href="eco-events.html" class="hover:text-white transition-colors">Event & Komunitas</a>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-heading font-bold text-xl mb-6 text-terracotta">Bantuan</h4>
+                    <ul class="space-y-4 text-sm text-white/80">
+                        <li><a href="faq.html" class="hover:text-white transition-colors">FAQ</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Syarat & Ketentuan</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Kebijakan Privasi</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Hubungi Kami</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-heading font-bold text-xl mb-6 text-terracotta">Media Sosial</h4>
+                    <div class="flex gap-4">
+                        <a href="#"
+                            class="social-icon bg-white text-green-dark w-10 h-10 rounded-full flex items-center justify-center hover:bg-terracotta hover:text-white shadow-sm">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path fill-rule="evenodd"
+                                    d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                        </a>
+                        <a href="#"
+                            class="social-icon bg-white text-green-dark w-10 h-10 rounded-full flex items-center justify-center hover:bg-terracotta hover:text-white shadow-sm">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.5 12 3.5 12 3.5s-7.505 0-9.377.55a3.015 3.015 0 0 0-2.122 2.136C0 8.07 0 12 0 12s0 3.93-.501 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.55 9.377.55 9.377.55s7.505 0 9.377-.55a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div
+                class="border-t border-white/20 pt-6 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-semibold">
+                <div class="text-white/80">&copy; 2026 WORMI. Semua hak dilindungi.</div>
+                <div class="text-white/80 flex items-center gap-1">Untuk masa depan yang lebih hijau. <span
+                        class="text-base leading-none">🌱</span></div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===================== SCRIPTS ===================== -->
+    <script>
+        // Navbar scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            nav.classList.toggle('navbar-scrolled', window.scrollY > 20);
+        });
+
+        // Mobile Menu
+        document.getElementById('mobile-menu-btn').addEventListener('click', () => document.getElementById('mobile-menu').classList.remove('translate-x-full'));
+        document.getElementById('close-menu-btn').addEventListener('click', () => document.getElementById('mobile-menu').classList.add('translate-x-full'));
+
+        // Cart Badge
+        function updateCartBadge() {
+            const cartStr = localStorage.getItem('wormi_cart');
+            let count = 0;
+            if (cartStr) { try { count = JSON.parse(cartStr).reduce((s, i) => s + i.qty, 0); } catch (e) { } }
+            ['cart-badge-desktop', 'cart-badge-mobile'].forEach(id => {
+                const el = document.getElementById(id);
+                if (count > 0) { el.textContent = count; el.classList.remove('hidden'); }
+                else { el.classList.add('hidden'); }
+            });
+        }
+        updateCartBadge();
+
+        // Quantity
+        const qtyInput = document.getElementById('product-qty');
+        function updateQty(d) {
+            let v = parseInt(qtyInput.value) || 1;
+            v = Math.max(1, v + d);
+            qtyInput.value = v;
+        }
+
+        // Image Gallery
+        function changeImage(src, el) {
+            document.getElementById('main-product-img').src = src;
+            document.querySelectorAll('.thumbnail-btn').forEach(b => {
+                b.classList.remove('border-green-dark');
+                b.classList.add('border-transparent');
+            });
+            el.classList.remove('border-transparent');
+            el.classList.add('border-green-dark');
+        }
+
+        // Color Picker
+        const colorMap = {
+            terracotta: 'assets/product-hero.png',
+            sage: 'assets/product-sage.png',
+            beige: 'assets/product-beige.png',
+            charcoal: 'assets/product-charcoal.png'
+        };
+        function selectColor(color, el) {
+            document.querySelectorAll('.color-option').forEach(b => b.classList.remove('active'));
+            el.classList.add('active');
+            // update main image
+            document.getElementById('main-product-img').src = colorMap[color];
+            // Reset thumbnail selection
+            document.querySelectorAll('.thumbnail-btn').forEach(b => {
+                b.classList.remove('border-green-dark');
+                b.classList.add('border-transparent');
+            });
+            document.querySelector('.thumbnail-btn').classList.remove('border-transparent');
+            document.querySelector('.thumbnail-btn').classList.add('border-green-dark');
+            // Update first thumbnail
+            document.querySelector('.thumbnail-btn img').src = colorMap[color];
+        }
+
+        // Tabs
+        function switchTab(id, btn) {
+            document.querySelectorAll('.tab-content').forEach(c => c.classList.add('hidden'));
+            document.getElementById('tab-' + id).classList.remove('hidden');
+            document.querySelectorAll('.tab-btn').forEach(b => { b.classList.remove('active', 'text-brown-dark'); b.classList.add('text-brown-medium'); });
+            btn.classList.add('active', 'text-brown-dark');
+            btn.classList.remove('text-brown-medium');
+        }
+
+        // Add to Cart
+        const cartModal = document.getElementById('cart-success-modal');
+        const cartContent = document.getElementById('cart-success-content');
+
+        function handleAddToCart() {
+            const qty = parseInt(qtyInput.value) || 1;
+            let cart = [];
+            const cartStr = localStorage.getItem('wormi_cart');
+            if (cartStr) { try { cart = JSON.parse(cartStr); } catch (e) { } }
+            const existing = cart.find(i => i.id === 'starter-pack');
+            if (existing) existing.qty += qty;
+            else cart.push({ id: 'starter-pack', name: 'WORMI Starter Pack', price: 249000, qty });
+            localStorage.setItem('wormi_cart', JSON.stringify(cart));
+            updateCartBadge();
+
+            // Modal
+            cartModal.classList.remove('hidden');
+            setTimeout(() => {
+                cartModal.classList.remove('opacity-0');
+                cartContent.classList.remove('scale-95');
+                cartContent.classList.add('scale-100');
+            }, 10);
+            document.body.style.overflow = 'hidden';
+
+            // Badge bounce
+            ['cart-badge-desktop', 'cart-badge-mobile'].forEach(id => {
+                const el = document.getElementById(id);
+                if (el && !el.classList.contains('hidden')) {
+                    el.style.transform = 'scale(1.4)';
+                    setTimeout(() => el.style.transform = 'scale(1)', 200);
+                }
+            });
+        }
+
+        window.closeCartModal = () => {
+            cartModal.classList.add('opacity-0');
+            cartContent.classList.remove('scale-100');
+            cartContent.classList.add('scale-95');
+            setTimeout(() => { cartModal.classList.add('hidden'); document.body.style.overflow = ''; }, 300);
+        };
+
+        // Scroll-reveal
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('revealed'); revealObserver.unobserve(entry.target); } });
+        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+        document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+    </script>
+</body>
+
+</html>
