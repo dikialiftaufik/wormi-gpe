@@ -9,6 +9,8 @@ def get_active_page(filename):
         return 'Produk'
     elif filename == 'eco-events.html':
         return 'Eco Events'
+    elif 'blog' in filename or 'artikel' in filename:
+        return 'Blog'
     return None
 
 def build_desktop_menu(active_page):
@@ -16,7 +18,7 @@ def build_desktop_menu(active_page):
         ('index.html', 'Beranda'),
         ('produk.html', 'Produk'),
         ('eco-events.html', 'Eco Events'),
-        ('javascript:void(0)', 'Blog')
+        ('blog.html', 'Blog')
     ]
     html = '<div class="hidden md:flex items-center space-x-8">\n'
     for href, label in links:
@@ -33,7 +35,7 @@ def build_footer_links():
                     <a href="index.html" class="hover:text-terracotta transition-colors">Beranda</a>
                     <a href="produk.html" class="hover:text-terracotta transition-colors">Produk</a>
                     <a href="eco-events.html" class="hover:text-terracotta transition-colors">Eco Events</a>
-                    <a href="javascript:void(0)" class="hover:text-terracotta transition-colors">Blog</a>
+                    <a href="blog.html" class="hover:text-terracotta transition-colors">Blog</a>
                 </div>'''
 
 def update_files():
@@ -88,7 +90,7 @@ def update_files():
                 ('index.html', 'Beranda'),
                 ('produk.html', 'Produk'),
                 ('eco-events.html', 'Eco Events'),
-                ('javascript:void(0)', 'Blog')
+                ('blog.html', 'Blog')
             ]
             m_html = ''
             for href, label in mobile_links:
